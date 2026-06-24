@@ -114,8 +114,14 @@ function LoginScreen({ onLogin }) {
       <div style={{ width: "100%", maxWidth: 420 }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
-            <div style={{ width: 48, height: 48, background: "linear-gradient(135deg, #3B82F6, #1E40AF)", borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>💰</div>
-            <div style={{ textAlign: "left" }}><div style={{ fontSize: 26, fontWeight: 800, color: "#fff", letterSpacing: -1 }}>CobrarFácil</div><div style={{ fontSize: 12, color: "#93C5FD", fontWeight: 500 }}>Gestão de Cobranças</div></div>
+            <svg width="180" height="42" viewBox="0 0 180 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="42" height="42" rx="10" fill="url(#gl)"/>
+              <text x="9" y="18" fontFamily="Arial" fontSize="13" fontWeight="bold" fill="white">E$</text>
+              <path d="M9 26 L21 33 L33 21" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <defs><linearGradient id="gl" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#22C55E"/><stop offset="100%" stopColor="#0D9488"/></linearGradient></defs>
+              <text x="52" y="26" fontFamily="Inter, Arial" fontSize="22" fontWeight="800" fill="#F8FAFC" letterSpacing="-1">CobrarFácil</text>
+              <text x="52" y="36" fontFamily="Inter, Arial" fontSize="9" fontWeight="500" fill="#93C5FD" letterSpacing="1.5">SISTEMA DE COBRANÇA</text>
+            </svg>
           </div>
           <p style={{ color: "#94A3B8", fontSize: 14, margin: 0 }}>Seus clientes pagam. Você recebe.</p>
         </div>
@@ -2361,10 +2367,12 @@ function AdminPanel({ onLogout }) {
       {/* Header Admin */}
       <div style={{ background: "#1E293B", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "14px 28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 36, height: 36, background: "linear-gradient(135deg, #F59E0B, #D97706)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>👑</div>
-          <div>
-            <div style={{ fontSize: 15, fontWeight: 800, color: "#fff" }}>CobrarFácil Admin</div>
-            <div style={{ fontSize: 11, color: "#64748B" }}>Painel Gerencial — Tiago Cabral</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="url(#ga)"/><text x="7" y="14" fontFamily="Arial" fontSize="10" fontWeight="bold" fill="white">E$</text><path d="M7 20 L16 25 L25 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/><defs><linearGradient id="ga" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#22C55E"/><stop offset="100%" stopColor="#0D9488"/></linearGradient></defs></svg>
+            <div>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#fff" }}>CobrarFácil Admin</div>
+              <div style={{ fontSize: 11, color: "#64748B" }}>Painel Gerencial — Tiago Cabral</div>
+            </div>
           </div>
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -2599,8 +2607,14 @@ export default function CobrarFacil() {
       <div style={{ width: 220, background: "#0F172A", display: "flex", flexDirection: "column", position: "fixed", top: 0, left: menuAberto ? 0 : "var(--sidebar-left, 0)", bottom: 0, zIndex: 100, transition: "left 0.25s" }}>
         <div style={{ padding: "18px 16px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 34, height: 34, background: "linear-gradient(135deg, #3B82F6, #1E40AF)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>💰</div>
-            <div><div style={{ fontSize: 15, fontWeight: 800, color: "#fff", letterSpacing: -0.5 }}>CobrarFácil</div><div style={{ fontSize: 10, color: "#475569" }}>GESTÃO DE COBRANÇAS</div></div>
+            <svg width="140" height="32" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="7" fill="url(#gs)"/>
+              <text x="7" y="14" fontFamily="Arial" fontSize="10" fontWeight="bold" fill="white">E$</text>
+              <path d="M7 20 L16 25 L25 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <defs><linearGradient id="gs" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#22C55E"/><stop offset="100%" stopColor="#0D9488"/></linearGradient></defs>
+              <text x="40" y="20" fontFamily="Inter, Arial" fontSize="15" fontWeight="800" fill="#F8FAFC" letterSpacing="-0.5">CobrarFácil</text>
+              <text x="40" y="29" fontFamily="Inter, Arial" fontSize="7" fontWeight="500" fill="#475569" letterSpacing="1.5">SISTEMA DE COBRANÇA</text>
+            </svg>
           </div>
         </div>
         <nav style={{ flex: 1, padding: "14px 10px", overflowY: "auto" }}>
