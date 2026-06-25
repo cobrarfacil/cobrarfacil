@@ -114,14 +114,13 @@ function LoginScreen({ onLogin }) {
       <div style={{ width: "100%", maxWidth: 420 }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
-            <svg width="180" height="42" viewBox="0 0 180 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="42" rx="10" fill="url(#gl)"/>
-              <text x="9" y="18" fontFamily="Arial" fontSize="13" fontWeight="bold" fill="white">E$</text>
-              <path d="M9 26 L21 33 L33 21" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <defs><linearGradient id="gl" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#22C55E"/><stop offset="100%" stopColor="#0D9488"/></linearGradient></defs>
-              <text x="52" y="26" fontFamily="Inter, Arial" fontSize="22" fontWeight="800" fill="#F8FAFC" letterSpacing="-1">CobrarFácil</text>
-              <text x="52" y="36" fontFamily="Inter, Arial" fontSize="9" fontWeight="500" fill="#93C5FD" letterSpacing="1.5">SISTEMA DE COBRANÇA</text>
-            </svg>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ width: 42, height: 42, background: "linear-gradient(135deg, #22C55E, #0D9488)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, fontWeight: 800, color: "#fff" }}>C$</div>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: 24, fontWeight: 800, color: "#fff", letterSpacing: -1 }}>CobrarFácil</div>
+                <div style={{ fontSize: 10, color: "#93C5FD", fontWeight: 500, letterSpacing: 1 }}>SISTEMA DE COBRANÇA</div>
+              </div>
+            </div>
           </div>
           <p style={{ color: "#94A3B8", fontSize: 14, margin: 0 }}>Seus clientes pagam. Você recebe.</p>
         </div>
@@ -168,7 +167,7 @@ function Dashboard({ clientes }) {
 
   // Clientes com vencimento em um dia específico
   const clientesDoDia = (dia) => {
-    const dataStr = `${anoSel}-${String(mesSel + 1).padStart(2,"0")}-${String(dia).padStart(2,"0")}`;
+    const dataStr = anoSel + "-" + String(mesSel + 1).padStart(2,"0") + "-" + String(dia).padStart(2,"0");
     return clientes.filter(c => c.vencimento === dataStr);
   };
 
@@ -243,7 +242,7 @@ function Dashboard({ clientes }) {
             <span style={{ fontSize: 13, fontWeight: 700, color: "#16A34A" }}>{total > 0 ? Math.round((totalRecebido / total) * 100) : 0}%</span>
           </div>
           <div style={{ background: "#F1F5F9", borderRadius: 99, height: 8, overflow: "hidden" }}>
-            <div style={{ width: `${total > 0 ? (totalRecebido / total) * 100 : 0}%`, background: "linear-gradient(90deg, #16A34A, #22C55E)", height: "100%", borderRadius: 99 }} />
+            <div style={{ width: (total > 0 ? Math.round((totalRecebido / total) * 100) : 0) + "%", background: "linear-gradient(90deg, #16A34A, #22C55E)", height: "100%", borderRadius: 99 }} />
           </div>
         </div>
       )}
@@ -267,7 +266,7 @@ function Dashboard({ clientes }) {
               {diasSemana.map(d => <div key={d} style={{ textAlign: "center", fontSize: 11, fontWeight: 700, color: "#94A3B8", padding: "4px 0" }}>{d}</div>)}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 4 }}>
-              {espacosVazios.map(i => <div key={`v${i}`} />)}
+              {espacosVazios.map(i => <div key={"v" + (i) + ""} />)}
               {diasArray.map(dia => {
                 const temVencimento = clientesDoDia(dia).length > 0;
                 const temPago = clientesDoDia(dia).some(c => c.status === "pago");
@@ -276,7 +275,7 @@ function Dashboard({ clientes }) {
                 const isSel = diaSel === dia;
                 return (
                   <div key={dia} onClick={() => setDiaSel(isSel ? null : dia)}
-                    style={{ borderRadius: 8, padding: "6px 4px", textAlign: "center", cursor: temVencimento ? "pointer" : "default", background: isSel ? "#1E40AF" : isHoje ? "#EFF6FF" : temVencimento ? "#F8FAFC" : "transparent", border: `1px solid ${isSel ? "#1E40AF" : isHoje ? "#BFDBFE" : temVencimento ? "#E2E8F0" : "transparent"}`, position: "relative" }}>
+                    style={{ borderRadius: 8, padding: "6px 4px", textAlign: "center", cursor: temVencimento ? "pointer" : "default", background: isSel ? "#1E40AF" : isHoje ? "#EFF6FF" : temVencimento ? "#F8FAFC" : "transparent", border: "1px solid " + (isSel ? "#1E40AF" : isHoje ? "#BFDBFE" : temVencimento ? "#E2E8F0" : "transparent") + "", position: "relative" }}>
                     <div style={{ fontSize: 13, fontWeight: isHoje ? 800 : 500, color: isSel ? "#fff" : isHoje ? "#1E40AF" : "#374151" }}>{dia}</div>
                     {temVencimento && (
                       <div style={{ display: "flex", justifyContent: "center", gap: 2, marginTop: 2 }}>
@@ -332,72 +331,6 @@ function Dashboard({ clientes }) {
           )}
         </div>
       )}
-    </div>
-  );
-}
-
-
-  const atrasados = clientes.filter(c => c.status === "atrasado");
-  const pagos = clientes.filter(c => c.status === "pago");
-  const pendentes = clientes.filter(c => c.status === "pendente");
-  const totalRecebido = pagos.reduce((a, c) => a + c.totalDivida, 0);
-  const totalEmRisco = atrasados.reduce((a, c) => a + c.totalDivida, 0);
-  const cards = [
-    { label: "Total em cobrança", value: fmt(total), icon: <Ic.money />, color: "#1E40AF", bg: "#EFF6FF" },
-    { label: "Já recebido", value: fmt(totalRecebido), icon: <Ic.trend />, color: "#16A34A", bg: "#F0FDF4" },
-    { label: "Em risco", value: fmt(totalEmRisco), icon: <Ic.alert />, color: "#DC2626", bg: "#FEF2F2" },
-    { label: "Clientes", value: clientes.length, icon: <Ic.users />, color: "#7C3AED", bg: "#F5F3FF" },
-  ];
-  return (
-    <div>
-      <div style={{ marginBottom: 22 }}>
-        <h1 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: "#0F172A" }}>Painel Geral</h1>
-        <p style={{ margin: "4px 0 0", color: "#64748B", fontSize: 14 }}>Quarta-feira, 24 de junho de 2026</p>
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 14, marginBottom: 22 }}>
-        {cards.map(c => (
-          <div key={c.label} style={{ background: "#fff", borderRadius: 16, padding: 18, border: "1px solid #F1F5F9", boxShadow: "0 1px 6px rgba(0,0,0,0.06)" }}>
-            <div style={{ width: 40, height: 40, background: c.bg, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", color: c.color, marginBottom: 12 }}>{c.icon}</div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "#0F172A" }}>{c.value}</div>
-            <div style={{ fontSize: 13, color: "#64748B", marginTop: 3 }}>{c.label}</div>
-          </div>
-        ))}
-      </div>
-      {atrasados.length > 0 && (
-        <div style={{ background: "#FEF2F2", border: "1px solid #FECACA", borderRadius: 14, padding: 14, marginBottom: 18, display: "flex", gap: 10, alignItems: "center" }}>
-          <span style={{ color: "#DC2626" }}><Ic.alert /></span>
-          <div><strong style={{ color: "#DC2626" }}>{atrasados.length} cliente(s) em atraso!</strong><span style={{ color: "#B91C1C", fontSize: 13, marginLeft: 8 }}>Total de {fmt(totalEmRisco)} em risco.</span></div>
-        </div>
-      )}
-      {clientes.filter(c => c.diasAtraso >= 90 && c.status !== "pago").length > 0 && (
-        <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 14, padding: 14, marginBottom: 18, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
-          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-            <span style={{ fontSize: 20 }}>🔄</span>
-            <div>
-              <div style={{ fontWeight: 700, color: "#7C3AED", fontSize: 14 }}>{clientes.filter(c => c.diasAtraso >= 90 && c.status !== "pago").length} dívida(s) com +90 dias — recuperação disponível</div>
-              <div style={{ fontSize: 13, color: "#6D28D9" }}>{fmt(clientes.filter(c => c.diasAtraso >= 90 && c.status !== "pago").reduce((a,c) => a+c.totalDivida,0))} com potencial de 40–60% de recuperação</div>
-            </div>
-          </div>
-        </div>
-      )}
-      <div style={{ background: "#fff", borderRadius: 16, padding: 20, border: "1px solid #F1F5F9" }}>
-        <h3 style={{ margin: "0 0 14px", fontSize: 15, fontWeight: 700 }}>Situação dos Clientes</h3>
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 18 }}>
-          {[{ label: "Pagos", count: pagos.length, color: "#16A34A", bg: "#F0FDF4" }, { label: "Pendentes", count: pendentes.length, color: "#D97706", bg: "#FFFBEB" }, { label: "Atrasados", count: atrasados.length, color: "#DC2626", bg: "#FEF2F2" }].map(s => (
-            <div key={s.label} style={{ flex: 1, minWidth: 90, background: s.bg, borderRadius: 12, padding: "14px 16px", textAlign: "center" }}>
-              <div style={{ fontSize: 26, fontWeight: 800, color: s.color }}>{s.count}</div>
-              <div style={{ fontSize: 12, color: s.color, fontWeight: 600 }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-          <span style={{ fontSize: 13, color: "#64748B" }}>Taxa de recebimento</span>
-          <span style={{ fontSize: 13, fontWeight: 700, color: "#16A34A" }}>{total > 0 ? Math.round((totalRecebido / total) * 100) : 0}%</span>
-        </div>
-        <div style={{ background: "#F1F5F9", borderRadius: 99, height: 8, overflow: "hidden" }}>
-          <div style={{ width: `${total > 0 ? (totalRecebido / total) * 100 : 0}%`, background: "linear-gradient(90deg, #16A34A, #22C55E)", height: "100%", borderRadius: 99 }} />
-        </div>
-      </div>
     </div>
   );
 }
@@ -469,7 +402,7 @@ function Clientes({ clientes, setClientes, onCobranca }) {
         <input placeholder="🔍 Buscar por nome ou CPF..." value={busca} onChange={e => setBusca(e.target.value)} style={{ flex: 1, minWidth: 160, border: "1.5px solid #E2E8F0", borderRadius: 10, padding: "9px 14px", fontSize: 14, outline: "none", background: "#F8FAFC" }} />
         {["todos", "pendente", "atrasado", "pago"].map(f => (
           <button key={f} onClick={() => setFiltro(f)} style={{ background: filtro === f ? "#1E40AF" : "#F1F5F9", color: filtro === f ? "#fff" : "#64748B", border: "none", borderRadius: 10, padding: "9px 14px", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
-            {f === "todos" ? `Todos (${clientes.length})` : `${statusColor[f]?.label} (${clientes.filter(c => c.status === f).length})`}
+            {f === "todos" ? "Todos (" + (clientes.length) + ")" : (statusColor[f]?.label || f) + " (" + clientes.filter(c => c.status === f).length + ")"}
           </button>
         ))}
       </div>
@@ -477,7 +410,7 @@ function Clientes({ clientes, setClientes, onCobranca }) {
       {/* Lista */}
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {filtrados.map(c => (
-          <div key={c.id} style={{ background: "#fff", borderRadius: 14, border: `1px solid ${c.status === "atrasado" ? "#FECACA" : "#F1F5F9"}`, overflow: "hidden" }}>
+          <div key={c.id} style={{ background: "#fff", borderRadius: 14, border: "1px solid " + (c.status === "atrasado" ? "#FECACA" : "#F1F5F9") + "", overflow: "hidden" }}>
             <div style={{ padding: "14px 18px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 10 }}>
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
@@ -488,7 +421,7 @@ function Clientes({ clientes, setClientes, onCobranca }) {
                     <div style={{ fontWeight: 700, fontSize: 15, color: "#0F172A" }}>{c.nome}</div>
                     <div style={{ fontSize: 12, color: "#94A3B8" }}>
                       {c.cpf || "CPF não informado"} · {c.telefone}
-                      {c.cidade ? ` · ${c.cidade}/${c.estado}` : ""}
+                      {c.cidade ? " · " + c.cidade + "/" + c.estado : ""}
                     </div>
                   </div>
                 </div>
@@ -543,7 +476,7 @@ function Clientes({ clientes, setClientes, onCobranca }) {
                   ["📱 WhatsApp", clienteDetalhes.telefone || "—"],
                   ["✉️ E-mail", clienteDetalhes.email || "—"],
                   ["📍 Endereço", clienteDetalhes.endereco || "—"],
-                  ["🏙 Cidade/UF", clienteDetalhes.cidade ? `${clienteDetalhes.cidade}/${clienteDetalhes.estado}` : "—"],
+                  ["🏙 Cidade/UF", clienteDetalhes.cidade ? clienteDetalhes.cidade + "/" + clienteDetalhes.estado : "—"],
                 ].map(([k, v]) => (
                   <div key={k} style={{ background: "#F8FAFC", borderRadius: 10, padding: "10px 14px" }}>
                     <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 600, marginBottom: 2 }}>{k}</div>
@@ -562,7 +495,7 @@ function Clientes({ clientes, setClientes, onCobranca }) {
               <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 14 }}>
                 {[
                   ["📅 Vencimento", clienteDetalhes.vencimento || "—"],
-                  ["📦 Parcelas", `${clienteDetalhes.parcelasPagas}/${clienteDetalhes.parcelas} pagas`],
+                  ["📦 Parcelas", clienteDetalhes.parcelasPagas + "/" + clienteDetalhes.parcelas + " pagas"],
                   ["💳 Valor/parcela", fmt(clienteDetalhes.totalDivida / clienteDetalhes.parcelas)],
                 ].map(([k, v]) => (
                   <div key={k} style={{ background: "#F8FAFC", borderRadius: 10, padding: "10px 14px" }}>
@@ -578,7 +511,7 @@ function Clientes({ clientes, setClientes, onCobranca }) {
                 </div>
               )}
               {/* Toggle automático */}
-              <div style={{ background: clienteDetalhes.automatico === false ? "#FFFBEB" : "#F0FDF4", border: `1.5px solid ${clienteDetalhes.automatico === false ? "#FDE68A" : "#86EFAC"}`, borderRadius: 10, padding: "12px 14px", marginTop: 10 }}>
+              <div style={{ background: clienteDetalhes.automatico === false ? "#FFFBEB" : "#F0FDF4", border: "1.5px solid " + (clienteDetalhes.automatico === false ? "#FDE68A" : "#86EFAC") + "", borderRadius: 10, padding: "12px 14px", marginTop: 10 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 13, color: "#0F172A" }}>
@@ -664,7 +597,7 @@ function Clientes({ clientes, setClientes, onCobranca }) {
           </div>
 
           {/* Toggle: cobrança automática */}
-          <div style={{ background: novo.automatico ? "#F0FDF4" : "#F8FAFC", border: `1.5px solid ${novo.automatico ? "#86EFAC" : "#E2E8F0"}`, borderRadius: 12, padding: "14px 16px", marginBottom: 18 }}>
+          <div style={{ background: novo.automatico ? "#F0FDF4" : "#F8FAFC", border: "1.5px solid " + (novo.automatico ? "#86EFAC" : "#E2E8F0") + "", borderRadius: 12, padding: "14px 16px", marginBottom: 18 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 14, color: "#0F172A" }}>
@@ -761,8 +694,8 @@ function ImportarPlanilha({ setClientes, setTela }) {
     const prev = rawData.slice(0, 50).map((row, i) => {
       const nome = row[mapeamento.nome]?.trim();
       const valor = parseFloat((row[mapeamento.totalDivida] || "").replace(",", "."));
-      if (!nome) err.push(`Linha ${i + 2}: nome vazio`);
-      if (isNaN(valor) || valor <= 0) err.push(`Linha ${i + 2}: valor inválido`);
+      if (!nome) err.push("Linha " + (i + 2) + ": nome vazio");
+      if (isNaN(valor) || valor <= 0) err.push("Linha " + (i + 2) + ": valor inválido");
       return { nome: nome || "—", cpf: row[mapeamento.cpf] || "", telefone: row[mapeamento.telefone] || "", email: row[mapeamento.email] || "", totalDivida: isNaN(valor) ? 0 : valor, vencimento: row[mapeamento.vencimento] || "", valido: !!(nome && !isNaN(valor) && valor > 0) };
     });
     setPreview(prev); setErros(err); setStep(3);
@@ -830,7 +763,7 @@ function ImportarPlanilha({ setClientes, setTela }) {
               {Object.keys(camposLabel).map(campo => (
                 <div key={campo}>
                   <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 5 }}>{camposLabel[campo]}</label>
-                  <select value={mapeamento[campo]} onChange={e => setMapeamento(p => ({ ...p, [campo]: e.target.value }))} style={{ width: "100%", border: `1.5px solid ${mapeamento[campo] ? "#3B82F6" : "#E2E8F0"}`, borderRadius: 10, padding: "9px 12px", fontSize: 14, background: mapeamento[campo] ? "#EFF6FF" : "#F8FAFC", outline: "none", cursor: "pointer" }}>
+                  <select value={mapeamento[campo]} onChange={e => setMapeamento(p => ({ ...p, [campo]: e.target.value }))} style={{ width: "100%", border: "1.5px solid " + (mapeamento[campo] ? "#3B82F6" : "#E2E8F0") + "", borderRadius: 10, padding: "9px 12px", fontSize: 14, background: mapeamento[campo] ? "#EFF6FF" : "#F8FAFC", outline: "none", cursor: "pointer" }}>
                     <option value="">— não mapear —</option>
                     {headers.map(h => <option key={h} value={h}>{h}</option>)}
                   </select>
@@ -965,7 +898,7 @@ function Negativacao({ clientes, user }) {
           <div style={{ background: "#fff", borderRadius: 14, padding: 16, border: "1px solid #F1F5F9" }}>
             <div style={{ fontWeight: 700, fontSize: 14, color: "#0F172A", marginBottom: 12 }}>Órgão de Proteção</div>
             {bureaus.map(b => (
-              <div key={b.key} onClick={() => setBureau(b.key)} style={{ padding: "10px 12px", borderRadius: 10, border: `1.5px solid ${bureau === b.key ? "#1E40AF" : "#E2E8F0"}`, background: bureau === b.key ? "#EFF6FF" : "#F8FAFC", cursor: "pointer", marginBottom: 8, display: "flex", gap: 10, alignItems: "center" }}>
+              <div key={b.key} onClick={() => setBureau(b.key)} style={{ padding: "10px 12px", borderRadius: 10, border: "1.5px solid " + (bureau === b.key ? "#1E40AF" : "#E2E8F0") + "", background: bureau === b.key ? "#EFF6FF" : "#F8FAFC", cursor: "pointer", marginBottom: 8, display: "flex", gap: 10, alignItems: "center" }}>
                 <span style={{ fontSize: 18 }}>{b.logo}</span>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 13, color: bureau === b.key ? "#1E40AF" : "#0F172A" }}>{b.label}</div><div style={{ fontSize: 11, color: "#64748B" }}>{b.desc}</div></div>
                 {bureau === b.key && <span style={{ color: "#1E40AF" }}><Ic.check /></span>}
@@ -992,7 +925,7 @@ function Negativacao({ clientes, user }) {
       </div>
 
       {modalDoc && (
-        <Modal title={`Documento — ${bureauLabel}`} onClose={() => setModalDoc(false)} wide>
+        <Modal title={"Documento — " + (bureauLabel) + ""} onClose={() => setModalDoc(false)} wide>
           <div style={{ background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 10, padding: 12, marginBottom: 18, fontSize: 13, color: "#166534", fontWeight: 600 }}>✅ Documento gerado! Salve ou imprima para enviar ao {bureauLabel}.</div>
           <div style={{ border: "1px solid #E2E8F0", borderRadius: 12, overflow: "hidden", marginBottom: 18 }}>
             <div style={{ background: "#0F172A", padding: "14px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -1051,7 +984,7 @@ function Negativacao({ clientes, user }) {
           </div>
           <div style={{ background: "#F8FAFC", borderRadius: 12, padding: 16, marginBottom: 18 }}>
             <div style={{ fontWeight: 700, fontSize: 14, color: "#0F172A", marginBottom: 10 }}>Próximos passos</div>
-            {[`Acesse o portal do ${bureauLabel} ou vá a um parceiro conveniado`, "Faça login com seu cadastro de credor PJ", "Envie este documento com os comprovantes da dívida", "O devedor será notificado e terá prazo para contestar", "Após quitação, solicite exclusão imediata"].map((s, i) => (
+            {["Acesse o portal do " + (bureauLabel) + " ou vá a um parceiro conveniado", "Faça login com seu cadastro de credor PJ", "Envie este documento com os comprovantes da dívida", "O devedor será notificado e terá prazo para contestar", "Após quitação, solicite exclusão imediata"].map((s, i) => (
               <div key={i} style={{ display: "flex", gap: 10, marginBottom: 8, alignItems: "flex-start" }}>
                 <div style={{ width: 22, height: 22, background: "#1E40AF", color: "#fff", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, flexShrink: 0 }}>{i + 1}</div>
                 <div style={{ fontSize: 13, color: "#374151", paddingTop: 3 }}>{s}</div>
@@ -1096,13 +1029,13 @@ function Recuperacao({ clientes, setClientes, historico, setHistorico, pixKey, n
     if (dias >= 365) return { label: "+1 ano", color: "#7C3AED", bg: "#F5F3FF" };
     if (dias >= 180) return { label: "+6 meses", color: "#DC2626", bg: "#FEF2F2" };
     if (dias >= 90)  return { label: "+90 dias", color: "#D97706", bg: "#FEF3C7" };
-    return { label: `${dias} dias`, color: "#64748B", bg: "#F1F5F9" };
+    return { label: "" + (dias) + " dias", color: "#64748B", bg: "#F1F5F9" };
   };
 
   const gerarMensagem = (c, tipo) => {
     const nome = c.nome.split(" ")[0];
     const empresa = nomeCobranca || "nossa empresa";
-    const pix = pixKey ? `\n💳 Pix: *${pixKey}*` : "";
+    const pix = pixKey ? "\n💳 Pix: *" + (pixKey) + "*" : "";
 
     if (tipo === "reativacao") {
       return `Olá ${nome}, tudo bem? 👋\n\nA *${empresa}* está em contato sobre um débito de *${fmt(c.totalDivida)}* que está em aberto há algum tempo.\n\nEntendemos que imprevistos acontecem. Por isso, preparamos uma condição especial para você resolver isso agora e seguir em frente sem dívida.\n\nResponda essa mensagem e vamos encontrar a melhor solução juntos. 🤝`;
@@ -1294,12 +1227,12 @@ function Recuperacao({ clientes, setClientes, historico, setHistorico, pixKey, n
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 18 }}>
                 {[
                   { key: "reativacao", emoji: "👋", label: "Reativação", desc: "Primeiro contato amigável após longo período. Tom de recomeço." },
-                  { key: "avista", emoji: "🎯", label: "Desconto à vista", desc: `Oferta de ${descontoAvista}% off para pagamento imediato via Pix.` },
-                  { key: "parcelado", emoji: "📅", label: "Parcelamento extra", desc: `Dividir em mais ${parcelasExtra}x sem juros adicionais.` },
+                  { key: "avista", emoji: "🎯", label: "Desconto à vista", desc: "Oferta de " + (descontoAvista) + "% off para pagamento imediato via Pix." },
+                  { key: "parcelado", emoji: "📅", label: "Parcelamento extra", desc: "Dividir em mais " + (parcelasExtra) + "x sem juros adicionais." },
                   { key: "ultimaChance", emoji: "⛔", label: "Última chance", desc: "Aviso formal antes de negativação. Tom firme e definitivo." },
                 ].map(op => (
                   <div key={op.key} onClick={() => setTipoOferta(op.key)}
-                    style={{ background: tipoOferta === op.key ? "#EFF6FF" : "#F8FAFC", border: `2px solid ${tipoOferta === op.key ? "#1E40AF" : "#E2E8F0"}`, borderRadius: 12, padding: "12px 14px", cursor: "pointer" }}>
+                    style={{ background: tipoOferta === op.key ? "#EFF6FF" : "#F8FAFC", border: "2px solid " + (tipoOferta === op.key ? "#1E40AF" : "#E2E8F0") + "", borderRadius: 12, padding: "12px 14px", cursor: "pointer" }}>
                     <div style={{ fontSize: 20, marginBottom: 6 }}>{op.emoji}</div>
                     <div style={{ fontWeight: 700, fontSize: 13, color: tipoOferta === op.key ? "#1E40AF" : "#0F172A", marginBottom: 4 }}>{op.label}</div>
                     <div style={{ fontSize: 11, color: "#64748B", lineHeight: 1.4 }}>{op.desc}</div>
@@ -1402,7 +1335,7 @@ function Regua({ clientes, setClientes, setTela }) {
   const toggleSuspensao = (clienteId) => {
     setClientes(prev => prev.map(c => c.id === clienteId ? { ...c, suspenso: !c.suspenso } : c));
     const c = clientes.find(x => x.id === clienteId);
-    showToast(c?.suspenso ? `✅ Cobrança de ${c?.nome?.split(" ")[0]} reativada` : `⏸ Cobrança de ${c?.nome?.split(" ")[0]} suspensa`);
+    showToast(c?.suspenso ? "✅ Cobrança de " + (c?.nome?.split(" ")[0]) + " reativada" : "⏸ Cobrança de " + (c?.nome?.split(" ")[0]) + " suspensa");
   };
 
   const toggleEtapa = (clienteId, etapaKey) => {
@@ -1440,7 +1373,7 @@ function Regua({ clientes, setClientes, setTela }) {
           {REGUA_PADRAO.map((e, i) => (
             <div key={e.key} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
               <div style={{ textAlign: "center", minWidth: 90 }}>
-                <div style={{ width: 40, height: 40, borderRadius: "50%", background: i === 0 ? "#EFF6FF" : i === 1 ? "#FFFBEB" : i === 2 ? "#FEF3C7" : i === 3 ? "#FEF2F2" : "#FDF2F8", border: `2px solid ${i === 0 ? "#3B82F6" : i === 1 ? "#F59E0B" : i === 2 ? "#D97706" : i === 3 ? "#DC2626" : "#9333EA"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, margin: "0 auto 6px" }}>{e.emoji}</div>
+                <div style={{ width: 40, height: 40, borderRadius: "50%", background: i === 0 ? "#EFF6FF" : i === 1 ? "#FFFBEB" : i === 2 ? "#FEF3C7" : i === 3 ? "#FEF2F2" : "#FDF2F8", border: "2px solid " + (i === 0 ? "#3B82F6" : i === 1 ? "#F59E0B" : i === 2 ? "#D97706" : i === 3 ? "#DC2626" : "#9333EA") + "", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, margin: "0 auto 6px" }}>{e.emoji}</div>
                 <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A" }}>{e.label}</div>
                 <div style={{ fontSize: 10, color: "#64748B", marginTop: 2, lineHeight: 1.3 }}>{e.desc}</div>
               </div>
@@ -1465,7 +1398,7 @@ function Regua({ clientes, setClientes, setTela }) {
           const etapasOff = etapasAtivas(c);
           const totalAtivas = REGUA_PADRAO.length - etapasOff.length;
           return (
-            <div key={c.id} style={{ background: "#fff", borderRadius: 14, border: `1.5px solid ${c.suspenso ? "#FDE68A" : "#F1F5F9"}`, overflow: "hidden" }}>
+            <div key={c.id} style={{ background: "#fff", borderRadius: 14, border: "1.5px solid " + (c.suspenso ? "#FDE68A" : "#F1F5F9") + "", overflow: "hidden" }}>
               {/* Header do cliente */}
               <div style={{ padding: "13px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10, background: c.suspenso ? "#FFFBEB" : "#fff" }}>
                 <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
@@ -1505,7 +1438,7 @@ function Regua({ clientes, setClientes, setTela }) {
                     {REGUA_PADRAO.map(etapa => {
                       const off = (c.etapasSuspensas || []).includes(etapa.key);
                       return (
-                        <div key={etapa.key} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: off ? "#F8FAFC" : "#fff", borderRadius: 10, padding: "10px 14px", border: `1px solid ${off ? "#E2E8F0" : "#D1FAE5"}`, opacity: off ? 0.6 : 1 }}>
+                        <div key={etapa.key} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: off ? "#F8FAFC" : "#fff", borderRadius: 10, padding: "10px 14px", border: "1px solid " + (off ? "#E2E8F0" : "#D1FAE5") + "", opacity: off ? 0.6 : 1 }}>
                           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                             <span style={{ fontSize: 18 }}>{etapa.emoji}</span>
                             <div>
@@ -1550,7 +1483,7 @@ function Aprovacoes({ clientes, historico, setHistorico, pixKey, setTela }) {
   const pendentes = clientes.filter(c => c.automatico === false && c.status !== "pago");
 
   const linkPix = (valor) => pixKey
-    ? `💳 Pix: *${pixKey}* | Valor: *${fmt(valor)}*`
+    ? "💳 Pix: *" + pixKey + "* | Valor: *" + fmt(valor) + "*"
     : `👉 [configure sua chave Pix nas Configurações]`;
 
   const gerarMensagem = (c) => {
@@ -1572,12 +1505,12 @@ function Aprovacoes({ clientes, historico, setHistorico, pixKey, setTela }) {
         aprovada: true,
       }, ...prev]);
       setAprovando(null);
-      showToast(`✅ Cobrança de ${c.nome.split(" ")[0]} aprovada e enviada!`);
+      showToast("✅ Cobrança de " + (c.nome.split(" ")[0]) + " aprovada e enviada!");
     }, 900);
   };
 
   const recusar = (c) => {
-    showToast(`Cobrança de ${c.nome.split(" ")[0]} ignorada.`, "error");
+    showToast("Cobrança de " + (c.nome.split(" ")[0]) + " ignorada.", "error");
   };
 
   const aprovarTodas = () => {
@@ -1592,7 +1525,7 @@ function Aprovacoes({ clientes, historico, setHistorico, pixKey, setTela }) {
         aprovada: true,
       }, ...prev]);
     });
-    showToast(`✅ ${pendentes.length} cobranças aprovadas e enviadas!`);
+    showToast("✅ " + (pendentes.length) + " cobranças aprovadas e enviadas!");
   };
 
   return (
@@ -1708,7 +1641,7 @@ function Cobrancas({ clientes, historico, setHistorico, clientePreSelecionado, s
   const [sucesso, setSucesso] = useState(false);
 
   const linkPix = (valor) => pixKey
-    ? `💳 Pix: *${pixKey}* | Valor: *${fmt(valor)}*`
+    ? "💳 Pix: *" + pixKey + "* | Valor: *" + fmt(valor) + "*"
     : `👉 [configure sua chave Pix nas Configurações]`;
 
   const tpls = {
@@ -1768,7 +1701,7 @@ function Cobrancas({ clientes, historico, setHistorico, clientePreSelecionado, s
             <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Canal</label>
             <div style={{ display: "flex", gap: 8 }}>
               {[{ k: "whatsapp", l: "WhatsApp", i: <Ic.whatsapp /> }, { k: "email", l: "E-mail", i: <Ic.email /> }].map(ch => (
-                <button key={ch.k} onClick={() => setCanal(ch.k)} style={{ flex: 1, background: canal === ch.k ? "#EFF6FF" : "#F8FAFC", border: `2px solid ${canal === ch.k ? "#1E40AF" : "#E2E8F0"}`, borderRadius: 10, padding: "9px 10px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: canal === ch.k ? "#1E40AF" : "#64748B" }}>{ch.i} {ch.l}</button>
+                <button key={ch.k} onClick={() => setCanal(ch.k)} style={{ flex: 1, background: canal === ch.k ? "#EFF6FF" : "#F8FAFC", border: "2px solid " + (canal === ch.k ? "#1E40AF" : "#E2E8F0") + "", borderRadius: 10, padding: "9px 10px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: canal === ch.k ? "#1E40AF" : "#64748B" }}>{ch.i} {ch.l}</button>
               ))}
             </div>
           </div>
@@ -1776,7 +1709,7 @@ function Cobrancas({ clientes, historico, setHistorico, clientePreSelecionado, s
             <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Template</label>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
               {[{ k: "lembrete", l: "🔔 Lembrete" }, { k: "atraso", l: "⚠️ Atraso" }, { k: "ultimoAviso", l: "🚨 Último aviso" }, { k: "negociacao", l: "🤝 Negociação" }].map(t => (
-                <button key={t.k} onClick={() => setTemplate(t.k)} style={{ background: template === t.k ? "#EFF6FF" : "#F8FAFC", border: `1.5px solid ${template === t.k ? "#1E40AF" : "#E2E8F0"}`, borderRadius: 8, padding: "7px 10px", cursor: "pointer", fontSize: 12, fontWeight: 600, color: template === t.k ? "#1E40AF" : "#64748B" }}>{t.l}</button>
+                <button key={t.k} onClick={() => setTemplate(t.k)} style={{ background: template === t.k ? "#EFF6FF" : "#F8FAFC", border: "1.5px solid " + (template === t.k ? "#1E40AF" : "#E2E8F0") + "", borderRadius: 8, padding: "7px 10px", cursor: "pointer", fontSize: 12, fontWeight: 600, color: template === t.k ? "#1E40AF" : "#64748B" }}>{t.l}</button>
               ))}
             </div>
           </div>
@@ -1860,7 +1793,7 @@ function Historico({ historico, setHistorico, clientes, setClientes }) {
   };
 
   const enviarComprovante = (cliente, valor, data) => {
-    showToast(`📲 Comprovante enviado para ${cliente.nome.split(" ")[0]}!`);
+    showToast("📲 Comprovante enviado para " + (cliente.nome.split(" ")[0]) + "!");
     setModalComprovante(null);
   };
 
@@ -2003,7 +1936,7 @@ function Historico({ historico, setHistorico, clientes, setClientes }) {
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 14, color: "#0F172A" }}>{c?.nome || "—"}</div>
                     <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 4 }}>
-                      {h.data}{h.dataPagamento ? ` · Pago: ${h.dataPagamento}` : ""}
+                      {h.data}{h.dataPagamento ? " · Pago: " + (h.dataPagamento) + "" : ""}
                       {h.tipoRenegociacao && <span style={{ marginLeft: 6, background: "#EFF6FF", color: "#1E40AF", fontSize: 10, fontWeight: 700, padding: "1px 6px", borderRadius: 99 }}>RENEGOCIADO</span>}
                     </div>
                     <div style={{ fontSize: 12, color: "#374151", background: "#F8FAFC", borderRadius: 8, padding: "6px 10px" }}>
@@ -2128,7 +2061,7 @@ function Historico({ historico, setHistorico, clientes, setClientes }) {
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 14, color: "#0F172A" }}>{c?.nome || "—"}</div>
                     <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 4 }}>
-                      {h.data}{h.dataPagamento ? ` · Pago em: ${h.dataPagamento}` : ""}
+                      {h.data}{h.dataPagamento ? " · Pago em: " + (h.dataPagamento) + "" : ""}
                     </div>
                     <div style={{ fontSize: 12, color: "#374151", background: "#F8FAFC", borderRadius: 8, padding: "6px 10px" }}>
                       {h.mensagem.substring(0, 90)}{h.mensagem.length > 90 ? "..." : ""}
@@ -2264,7 +2197,7 @@ function Configuracoes({ user, pixKey, setPixKey, nomeCobranca, setNomeCobranca 
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                   {Object.entries(tiposLabel).map(([k, v]) => (
                     <button key={k} onClick={() => { setPixTipo(k); setPixInput(""); }}
-                      style={{ background: pixTipo === k ? "#1E40AF" : "#fff", color: pixTipo === k ? "#fff" : "#374151", border: `1.5px solid ${pixTipo === k ? "#1E40AF" : "#E2E8F0"}`, borderRadius: 10, padding: "9px 12px", cursor: "pointer", fontSize: 13, fontWeight: 600, textAlign: "center" }}>
+                      style={{ background: pixTipo === k ? "#1E40AF" : "#fff", color: pixTipo === k ? "#fff" : "#374151", border: "1.5px solid " + (pixTipo === k ? "#1E40AF" : "#E2E8F0") + "", borderRadius: 10, padding: "9px 12px", cursor: "pointer", fontSize: 13, fontWeight: 600, textAlign: "center" }}>
                       {v}
                     </button>
                   ))}
@@ -2368,7 +2301,7 @@ function AdminPanel({ onLogout }) {
       <div style={{ background: "#1E293B", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "14px 28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="url(#ga)"/><text x="7" y="14" fontFamily="Arial" fontSize="10" fontWeight="bold" fill="white">E$</text><path d="M7 20 L16 25 L25 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/><defs><linearGradient id="ga" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#22C55E"/><stop offset="100%" stopColor="#0D9488"/></linearGradient></defs></svg>
+            <div style={{ width: 32, height: 32, background: "linear-gradient(135deg, #22C55E, #0D9488)", borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, color: "#fff" }}>C$</div>
             <div>
               <div style={{ fontSize: 15, fontWeight: 800, color: "#fff" }}>CobrarFácil Admin</div>
               <div style={{ fontSize: 11, color: "#64748B" }}>Painel Gerencial — Tiago Cabral</div>
@@ -2385,7 +2318,7 @@ function AdminPanel({ onLogout }) {
         {/* Abas */}
         <div style={{ display: "flex", gap: 6, marginBottom: 24 }}>
           {[["overview", "📊 Visão Geral"], ["lojistas", "🏪 Clientes"], ["financeiro", "💰 Financeiro"], ["planos", "📦 Planos"]].map(([k, l]) => (
-            <button key={k} onClick={() => setAba(k)} style={{ background: aba === k ? "#1E40AF" : "#1E293B", color: aba === k ? "#fff" : "#64748B", border: `1px solid ${aba === k ? "#1E40AF" : "#334155"}`, borderRadius: 10, padding: "8px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>{l}</button>
+            <button key={k} onClick={() => setAba(k)} style={{ background: aba === k ? "#1E40AF" : "#1E293B", color: aba === k ? "#fff" : "#64748B", border: "1px solid " + (aba === k ? "#1E40AF" : "#334155") + "", borderRadius: 10, padding: "8px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>{l}</button>
           ))}
         </div>
 
@@ -2397,7 +2330,7 @@ function AdminPanel({ onLogout }) {
               {[
                 { label: "MRR", value: fmt(mrr), sub: "Receita mensal recorrente", color: "#22C55E", bg: "#052e16" },
                 { label: "ARR", value: fmt(arr), sub: "Projeção anual", color: "#3B82F6", bg: "#0c1a3a" },
-                { label: "Clientes ativos", value: ativos.length, sub: `${cancelados.length} cancelados`, color: "#A78BFA", bg: "#1a0a3a" },
+                { label: "Clientes ativos", value: ativos.length, sub: "" + (cancelados.length) + " cancelados", color: "#A78BFA", bg: "#1a0a3a" },
                 { label: "Inadimplentes", value: inadimplentes.length, sub: fmt(inadimplentes.reduce((a, l) => a + l.mrr, 0)) + " em risco", color: "#F59E0B", bg: "#2a1a00" },
                 { label: "Total devedores", value: totalClientes, sub: "Nos sistemas dos clientes", color: "#94A3B8", bg: "#1a2234" },
               ].map(c => (
@@ -2451,7 +2384,7 @@ function AdminPanel({ onLogout }) {
               <input placeholder="🔍 Buscar cliente..." value={busca} onChange={e => setBusca(e.target.value)}
                 style={{ flex: 1, minWidth: 200, background: "#1E293B", border: "1px solid #334155", borderRadius: 10, padding: "9px 14px", fontSize: 14, color: "#E2E8F0", outline: "none" }} />
               {["todos", "ativo", "inadimplente", "cancelado"].map(s => (
-                <button key={s} onClick={() => setFiltroStatus(s)} style={{ background: filtroStatus === s ? "#1E40AF" : "#1E293B", color: filtroStatus === s ? "#fff" : "#64748B", border: `1px solid ${filtroStatus === s ? "#1E40AF" : "#334155"}`, borderRadius: 10, padding: "9px 14px", fontSize: 13, fontWeight: 600, cursor: "pointer", textTransform: "capitalize" }}>{s === "todos" ? "Todos" : s}</button>
+                <button key={s} onClick={() => setFiltroStatus(s)} style={{ background: filtroStatus === s ? "#1E40AF" : "#1E293B", color: filtroStatus === s ? "#fff" : "#64748B", border: "1px solid " + (filtroStatus === s ? "#1E40AF" : "#334155") + "", borderRadius: 10, padding: "9px 14px", fontSize: 13, fontWeight: 600, cursor: "pointer", textTransform: "capitalize" }}>{s === "todos" ? "Todos" : s}</button>
               ))}
             </div>
             <div style={{ background: "#1E293B", borderRadius: 14, border: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
@@ -2497,10 +2430,10 @@ function AdminPanel({ onLogout }) {
           <div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
               {[
-                { label: "Receita do mês atual", value: fmt(mrr), sub: `${ativos.length} clientes ativos`, color: "#22C55E" },
+                { label: "Receita do mês atual", value: fmt(mrr), sub: "" + (ativos.length) + " clientes ativos", color: "#22C55E" },
                 { label: "A receber este mês", value: fmt(mrr - inadimplentes.reduce((a, l) => a + l.mrr, 0)), sub: "Excluindo inadimplentes", color: "#3B82F6" },
-                { label: "Em risco (inadimplentes)", value: fmt(inadimplentes.reduce((a, l) => a + l.mrr, 0)), sub: `${inadimplentes.length} cliente(s)`, color: "#F59E0B" },
-                { label: "Perdido (cancelados)", value: fmt(cancelados.length * 97), sub: `${cancelados.length} cancelado(s)`, color: "#EF4444" },
+                { label: "Em risco (inadimplentes)", value: fmt(inadimplentes.reduce((a, l) => a + l.mrr, 0)), sub: "" + (inadimplentes.length) + " cliente(s)", color: "#F59E0B" },
+                { label: "Perdido (cancelados)", value: fmt(cancelados.length * 97), sub: "" + (cancelados.length) + " cancelado(s)", color: "#EF4444" },
               ].map(c => (
                 <div key={c.label} style={{ background: "#1E293B", borderRadius: 14, padding: 20, border: "1px solid rgba(255,255,255,0.06)" }}>
                   <div style={{ fontSize: 11, color: "#64748B", fontWeight: 600, marginBottom: 4 }}>{c.label.toUpperCase()}</div>
@@ -2543,7 +2476,7 @@ function AdminPanel({ onLogout }) {
               { nome: "Pro", preco: 97, cor: "#60A5FA", bg: "#0c1a3a", features: ["Clientes ilimitados", "WhatsApp automático", "Importação CSV/Excel", "Régua completa (5 etapas)", "Negativação Serasa/SPC", "Relatórios avançados", "Suporte prioritário"], destaque: true },
               { nome: "Enterprise", preco: 297, cor: "#A78BFA", bg: "#1a0a3a", features: ["Tudo do Pro", "Multi-usuário (até 5)", "API de integração", "Onboarding dedicado", "SLA garantido", "Gerente de conta"] },
             ].map(p => (
-              <div key={p.nome} style={{ background: p.bg, borderRadius: 16, padding: 24, border: `2px solid ${p.destaque ? p.cor : "rgba(255,255,255,0.08)"}`, position: "relative" }}>
+              <div key={p.nome} style={{ background: p.bg, borderRadius: 16, padding: 24, border: "2px solid " + (p.destaque ? p.cor : "rgba(255,255,255,0.08)") + "", position: "relative" }}>
                 {p.destaque && <div style={{ position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)", background: "#1E40AF", color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 12px", borderRadius: 99 }}>MAIS POPULAR</div>}
                 <div style={{ fontSize: 14, fontWeight: 700, color: p.cor, marginBottom: 4 }}>{p.nome}</div>
                 <div style={{ fontSize: 30, fontWeight: 800, color: "#fff", marginBottom: 4 }}>{fmt(p.preco)}<span style={{ fontSize: 13, fontWeight: 400, color: "#64748B" }}>/mês</span></div>
@@ -2607,14 +2540,13 @@ export default function CobrarFacil() {
       <div style={{ width: 220, background: "#0F172A", display: "flex", flexDirection: "column", position: "fixed", top: 0, left: menuAberto ? 0 : "var(--sidebar-left, 0)", bottom: 0, zIndex: 100, transition: "left 0.25s" }}>
         <div style={{ padding: "18px 16px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <svg width="140" height="32" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="32" height="32" rx="7" fill="url(#gs)"/>
-              <text x="7" y="14" fontFamily="Arial" fontSize="10" fontWeight="bold" fill="white">E$</text>
-              <path d="M7 20 L16 25 L25 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <defs><linearGradient id="gs" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#22C55E"/><stop offset="100%" stopColor="#0D9488"/></linearGradient></defs>
-              <text x="40" y="20" fontFamily="Inter, Arial" fontSize="15" fontWeight="800" fill="#F8FAFC" letterSpacing="-0.5">CobrarFácil</text>
-              <text x="40" y="29" fontFamily="Inter, Arial" fontSize="7" fontWeight="500" fill="#475569" letterSpacing="1.5">SISTEMA DE COBRANÇA</text>
-            </svg>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 34, height: 34, background: "linear-gradient(135deg, #22C55E, #0D9488)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "#fff" }}>C$</div>
+            <div>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#fff", letterSpacing: -0.5 }}>CobrarFácil</div>
+              <div style={{ fontSize: 10, color: "#475569" }}>SISTEMA DE COBRANÇA</div>
+            </div>
+            </div>
           </div>
         </div>
         <nav style={{ flex: 1, padding: "14px 10px", overflowY: "auto" }}>
