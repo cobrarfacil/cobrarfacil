@@ -2663,3 +2663,4 @@ export default function CobrarFacil() {
     </div>
   );
 }
+ 
