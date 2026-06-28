@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CobrarFácil — Recupere o dinheiro que você já deu como perdido</title>
   <meta name="description" content="Sistema automático de cobrança via WhatsApp. Recupere dinheiro parado, controle inadimplentes e negatave no Serasa com um clique. Para pequenos negócios." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23059669'/><text y='.9em' font-size='60' x='50%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' fill='white'>C$</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -193,7 +194,6 @@
     .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
     .mockup-screen { background: #F8FAFC; }
 
-    /* Painel mini */
     .mini-panel { padding: 14px; }
     .mini-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .mini-logo { display: flex; align-items: center; gap: 6px; }
@@ -210,7 +210,6 @@
     .mini-client-val { font-size: 11px; font-weight: 800; color: #DC2626; }
     .mini-badge { font-size: 8px; font-weight: 700; padding: 2px 6px; border-radius: 99px; }
 
-    /* Floating cards */
     .float-card {
       position: absolute;
       background: #fff;
@@ -280,7 +279,6 @@
 
     .screen-body { padding: 16px; }
 
-    /* MOCK DASHBOARD */
     .mock-dash-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
     .mock-dash-card { border-radius: 10px; padding: 10px 12px; }
     .mock-dash-val { font-size: 16px; font-weight: 800; color: var(--dark); }
@@ -294,7 +292,6 @@
     .mock-progress { height: 6px; background: #F1F5F9; border-radius: 99px; overflow: hidden; margin-top: 8px; }
     .mock-progress-bar { height: 100%; background: linear-gradient(90deg, #059669, #10B981); border-radius: 99px; }
 
-    /* MOCK CLIENTS */
     .mock-client-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #F8FAFC; }
     .mock-client-info { display: flex; align-items: center; gap: 8px; }
     .mock-avatar { width: 32px; height: 32px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
@@ -304,7 +301,6 @@
     .mock-btns { display: flex; gap: 4px; margin-top: 4px; justify-content: flex-end; }
     .mock-btn { font-size: 8px; padding: 3px 7px; border-radius: 6px; font-weight: 700; border: none; cursor: default; }
 
-    /* MOCK CHAT */
     .mock-chat-header { background: #075E54; padding: 10px 14px; display: flex; align-items: center; gap: 8px; border-radius: 10px 10px 0 0; margin: -16px -16px 12px; }
     .mock-chat-avatar { width: 32px; height: 32px; background: #128C7E; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #fff; }
     .mock-chat-name { font-size: 13px; font-weight: 700; color: #fff; }
@@ -319,7 +315,6 @@
     .mock-input { flex: 1; background: #fff; border-radius: 20px; padding: 7px 12px; font-size: 10px; color: #94A3B8; border: none; }
     .mock-send { width: 30px; height: 30px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: default; }
 
-    /* MOCK WHATSAPP */
     .mock-wpp-wrap { background: #E5DDD5; border-radius: 10px; padding: 12px; }
     .mock-wpp-bubble { background: #fff; border-radius: 10px 10px 10px 0; padding: 10px 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); max-width: 90%; }
     .mock-wpp-text { font-size: 12px; color: #0F172A; line-height: 1.6; white-space: pre-wrap; }
@@ -516,7 +511,6 @@
       <!-- MOCKUP DO SISTEMA -->
       <div class="hero-mockup">
         <div style="position:relative;">
-          <!-- Floating cards -->
           <div class="float-card left" style="background:#DCFCE7;color:#16A34A;font-size:11px;">
             ✅ R$850 recebido agora!
           </div>
@@ -773,7 +767,6 @@
             <div style="background:#FEE2E2;color:#DC2626;font-size:9px;padding:4px 8px;border-radius:6px;font-weight:700;">Atrasado (2)</div>
             <div style="background:#DCFCE7;color:#16A34A;font-size:9px;padding:4px 8px;border-radius:6px;font-weight:600;">Pago (2)</div>
           </div>
-
           <div class="mock-client-row">
             <div class="mock-client-info">
               <div class="mock-avatar" style="background:#FEE2E2;color:#DC2626;">M</div>
@@ -791,7 +784,6 @@
               </div>
             </div>
           </div>
-
           <div class="mock-client-row">
             <div class="mock-client-info">
               <div class="mock-avatar" style="background:#FEE2E2;color:#DC2626;">A</div>
@@ -809,7 +801,6 @@
               </div>
             </div>
           </div>
-
           <div class="mock-client-row">
             <div class="mock-client-info">
               <div class="mock-avatar" style="background:#DBEAFE;color:#1E40AF;">J</div>
@@ -827,7 +818,6 @@
               </div>
             </div>
           </div>
-
           <div class="mock-client-row" style="border-bottom:none;">
             <div class="mock-client-info">
               <div class="mock-avatar" style="background:#DCFCE7;color:#16A34A;">C</div>
@@ -1133,7 +1123,7 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
           <li>Suporte WhatsApp</li>
           <li>Atualizações gratuitas</li>
         </ul>
-        <a href="https://wa.me/5544998970506?text=Quero+testar+o+CobrarFacil" class="price-cta outline">Testar grátis 7 dias →</a>
+        <a href="https://app.cobrarfacil.com.br/checkout?plano=mensal" class="price-cta outline">Testar grátis 7 dias →</a>
       </div>
 
       <div class="price-card destaque">
@@ -1148,7 +1138,7 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
           <li>Calendário financeiro</li>
           <li>Prioridade no suporte</li>
         </ul>
-        <a href="https://wa.me/5544998970506?text=Quero+testar+o+CobrarFacil+trimestral" class="price-cta">Testar grátis 7 dias →</a>
+        <a href="https://app.cobrarfacil.com.br/checkout?plano=trimestral" class="price-cta">Testar grátis 7 dias →</a>
       </div>
 
       <div class="price-card">
@@ -1162,13 +1152,13 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
           <li>Relatórios avançados</li>
           <li>Novidades em primeira mão</li>
         </ul>
-        <a href="https://wa.me/5544998970506?text=Quero+testar+o+CobrarFacil+anual" class="price-cta outline" style="background:#7C3AED;color:#fff;border:none;">Testar grátis 7 dias →</a>
+        <a href="https://app.cobrarfacil.com.br/checkout?plano=anual" class="price-cta outline" style="background:#7C3AED;color:#fff;border:none;">Testar grátis 7 dias →</a>
       </div>
     </div>
 
     <div class="garantias">
       <div class="garantia"><span class="garantia-icon">🔒</span><div><div class="garantia-title">7 dias de garantia</div><div class="garantia-sub">Não gostou? Devolvemos 100% via WhatsApp.</div></div></div>
-      <div class="garantia"><span class="garantia-icon">📱</span><div><div class="garantia-title">Suporte WhatsApp</div><div class="garantia-sub">Seg–Sex · 8h às 18h · (44) 99719-2413</div></div></div>
+      <div class="garantia"><span class="garantia-icon">📱</span><div><div class="garantia-title">Suporte WhatsApp</div><div class="garantia-sub">Seg–Sex · 8h às 18h · (44) 99897-0506</div></div></div>
       <div class="garantia"><span class="garantia-icon">🔄</span><div><div class="garantia-title">Atualizações grátis</div><div class="garantia-sub">Novas funções sem custo adicional.</div></div></div>
       <div class="garantia"><span class="garantia-icon">💻</span><div><div class="garantia-title">Celular + Computador</div><div class="garantia-sub">iOS, Android e desktop. Funciona em tudo.</div></div></div>
     </div>
@@ -1241,7 +1231,7 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
   <div style="display:flex;gap:18px;flex-wrap:wrap;">
     <a href="#">Termos de uso</a>
     <a href="#">Privacidade</a>
-    <a href="#">Suporte</a>
+    <a href="https://wa.me/5544998970506?text=Suporte+CobrarFacil">Suporte</a>
   </div>
 </footer>
 
