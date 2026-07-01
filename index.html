@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CobrarFácil — Recupere o dinheiro que você já deu como perdido</title>
-  <meta name="description" content="Sistema automático de cobrança via WhatsApp. Recupere dinheiro parado, controle inadimplentes e negatave no Serasa com um clique. Para pequenos negócios." />
+  <meta name="description" content="Sistema automático de cobrança via WhatsApp. Recupere dinheiro parado e controle inadimplentes de forma simples. Para pequenos negócios." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -241,6 +241,7 @@
     .counter-item:last-child { border-right: none; }
     .counter-num { font-size: 32px; font-weight: 900; color: var(--green2); letter-spacing: -1px; line-height: 1; margin-bottom: 5px; }
     .counter-label { font-size: 12px; color: #94A3B8; }
+    .counter-source { text-align: center; font-size: 11px; color: #64748B; margin-top: 10px; }
 
     /* ── DOR ── */
     #dor { background: #fff; }
@@ -300,20 +301,6 @@
     .mock-client-val { font-size: 13px; font-weight: 800; }
     .mock-btns { display: flex; gap: 4px; margin-top: 4px; justify-content: flex-end; }
     .mock-btn { font-size: 8px; padding: 3px 7px; border-radius: 6px; font-weight: 700; border: none; cursor: default; }
-
-    .mock-chat-header { background: #075E54; padding: 10px 14px; display: flex; align-items: center; gap: 8px; border-radius: 10px 10px 0 0; margin: -16px -16px 12px; }
-    .mock-chat-avatar { width: 32px; height: 32px; background: #128C7E; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #fff; }
-    .mock-chat-name { font-size: 13px; font-weight: 700; color: #fff; }
-    .mock-chat-status { font-size: 10px; color: #B2DFDB; }
-    .mock-chat-actions { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; padding: 6px; background: #F0F0F0; border-radius: 8px; }
-    .mock-chat-action { font-size: 8px; padding: 3px 7px; border-radius: 12px; font-weight: 700; border: none; cursor: default; }
-    .mock-chat-body { background: #ECE5DD; border-radius: 8px; padding: 10px; min-height: 100px; display: flex; flex-direction: column; gap: 8px; }
-    .mock-msg { border-radius: 10px; padding: 8px 10px; max-width: 80%; }
-    .mock-msg-text { font-size: 11px; color: #0F172A; line-height: 1.5; }
-    .mock-msg-time { font-size: 9px; color: #94A3B8; text-align: right; margin-top: 3px; }
-    .mock-chat-input { display: flex; gap: 6px; margin-top: 10px; }
-    .mock-input { flex: 1; background: #fff; border-radius: 20px; padding: 7px 12px; font-size: 10px; color: #94A3B8; border: none; }
-    .mock-send { width: 30px; height: 30px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: default; }
 
     .mock-wpp-wrap { background: #E5DDD5; border-radius: 10px; padding: 12px; }
     .mock-wpp-bubble { background: #fff; border-radius: 10px 10px 10px 0; padding: 10px 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); max-width: 90%; }
@@ -375,16 +362,13 @@
     .wpp-time { font-size: 10px; color: #94A3B8; text-align: right; margin-top: 5px; }
     .wpp-pix { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 8px; padding: 9px 12px; margin-top: 10px; font-size: 12px; color: #166534; font-weight: 600; }
 
-    /* ── DEPOIMENTOS ── */
+    /* ── DE LOJISTA PRA LOJISTA ── */
     #prova { background: #fff; }
-    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
-    .testimonial { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
-    .stars { color: #F59E0B; font-size: 13px; margin-bottom: 12px; }
-    .testimonial-text { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
-    .testimonial-author { display: flex; align-items: center; gap: 10px; }
-    .author-avatar { width: 36px; height: 36px; border-radius: 50%; background: rgba(5,150,105,0.12); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--green); }
-    .author-name { font-size: 13px; font-weight: 700; color: var(--dark); }
-    .author-biz { font-size: 11px; color: var(--muted); }
+    .founder-card { max-width: 720px; margin: 0 auto; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 32px; display: flex; gap: 20px; align-items: flex-start; }
+    .founder-avatar { width: 56px; height: 56px; border-radius: 50%; background: rgba(5,150,105,0.12); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 22px; color: var(--green); flex-shrink: 0; }
+    .founder-name { font-size: 15px; font-weight: 800; color: var(--dark); }
+    .founder-role { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+    .founder-text { font-size: 15px; color: var(--text); line-height: 1.75; }
 
     /* ── PREÇO ── */
     #preco { text-align: center; background: var(--bg); }
@@ -458,6 +442,7 @@
       .counter-item:last-child { border-bottom: none; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .btn-primary, .btn-entrar { width: 100%; justify-content: center; }
+      .founder-card { flex-direction: column; align-items: center; text-align: center; }
     }
     @media (max-width: 480px) {
       .price-card { padding: 24px 20px; }
@@ -503,7 +488,7 @@
         </div>
         <div class="hero-proof">
           <div class="proof-item">✓ <span>Sem cartão</span> para testar</div>
-          <div class="proof-item">✓ <span>+2.800</span> negócios ativos</div>
+          <div class="proof-item">✓ <span>Vagas de lançamento</span> — preço sobe em breve</div>
           <div class="proof-item">✓ Configura em <span>10 minutos</span></div>
         </div>
       </div>
@@ -572,7 +557,6 @@
                   <div style="text-align:right;">
                     <div class="mini-client-val" style="color:#DC2626;">R$1.200</div>
                     <div style="display:flex;gap:3px;margin-top:3px;">
-                      <span style="font-size:8px;background:#25D366;color:#fff;padding:2px 5px;border-radius:4px;font-weight:700;">Chat</span>
                       <span style="font-size:8px;background:#16A34A;color:#fff;padding:2px 5px;border-radius:4px;font-weight:700;">Cobrar</span>
                     </div>
                   </div>
@@ -586,7 +570,6 @@
                   <div style="text-align:right;">
                     <div class="mini-client-val" style="color:#DC2626;">R$2.100</div>
                     <div style="display:flex;gap:3px;margin-top:3px;">
-                      <span style="font-size:8px;background:#25D366;color:#fff;padding:2px 5px;border-radius:4px;font-weight:700;">Chat</span>
                       <span style="font-size:8px;background:#16A34A;color:#fff;padding:2px 5px;border-radius:4px;font-weight:700;">Cobrar</span>
                     </div>
                   </div>
@@ -606,25 +589,26 @@
       </div>
     </div>
 
-    <!-- COUNTER BAR -->
+    <!-- COUNTER BAR — dados reais do mercado brasileiro, não métricas internas -->
     <div class="counter-bar">
       <div class="counter-item">
-        <div class="counter-num" id="cnt1">R$0</div>
-        <div class="counter-label">Recuperados por negócios</div>
+        <div class="counter-num" id="cnt1">81,7M</div>
+        <div class="counter-label">Brasileiros com o nome negativado</div>
       </div>
       <div class="counter-item">
-        <div class="counter-num" id="cnt2">0</div>
-        <div class="counter-label">Cobranças enviadas</div>
+        <div class="counter-num" id="cnt2">8,7M</div>
+        <div class="counter-label">Empresas brasileiras inadimplentes</div>
       </div>
       <div class="counter-item">
-        <div class="counter-num" id="cnt3">0%</div>
-        <div class="counter-label">Taxa média de recuperação</div>
+        <div class="counter-num" id="cnt3">94%</div>
+        <div class="counter-label">São micro e pequenas empresas</div>
       </div>
       <div class="counter-item">
-        <div class="counter-num" id="cnt4">0</div>
-        <div class="counter-label">Negócios usando agora</div>
+        <div class="counter-num" id="cnt4">71%</div>
+        <div class="counter-label">Preferem mensagem a atender ligação</div>
       </div>
     </div>
+    <div class="counter-source">Fontes: Serasa — Mapa da Inadimplência e Indicador de Inadimplência das Empresas (2026) · Opinion Box</div>
   </div>
 </section>
 
@@ -633,31 +617,25 @@
   <div class="container">
     <div class="section-label">A realidade do seu negócio</div>
     <h2>O dinheiro está lá.<br>Só não está na sua conta.</h2>
-    <p class="section-sub">Barbearia, consultório, loja, salão, prestador de serviço — se você vende a prazo ou tem clientes que devem, esse problema é seu.</p>
+    <p class="section-sub">Barbearia, consultório, loja, salão, prestador de serviço — se você vende a prazo ou tem clientes que devem, esse problema é seu. E não é só seu: é do Brasil inteiro.</p>
     <div class="dor-grid">
       <div class="dor-card">
         <div class="dor-icon">😶</div>
         <div class="dor-title">Vergonha de cobrar</div>
         <div class="dor-text">Você evita a conversa desconfortável e o cliente aproveita. A dívida vai crescendo enquanto você espera o momento certo.</div>
-        <span class="dor-cost">Custo médio: R$800/mês perdido por negócio</span>
+        <span class="dor-cost">71% das pessoas preferem receber mensagem a atender ligação de cobrança</span>
       </div>
       <div class="dor-card">
         <div class="dor-icon">😰</div>
         <div class="dor-title">Esquece de cobrar</div>
         <div class="dor-text">No meio do movimento do dia, o devedor some da cabeça. Quando lembra, já passaram 60 dias e fica ainda mais difícil.</div>
-        <span class="dor-cost">70% das dívidas acima de 90 dias não são recuperadas</span>
+        <span class="dor-cost">8,7 milhões de empresas brasileiras estão inadimplentes agora</span>
       </div>
       <div class="dor-card">
         <div class="dor-icon">😤</div>
         <div class="dor-title">Cobra e perde o cliente</div>
         <div class="dor-text">A cobrança na hora errada, com o tom errado, estraga o relacionamento. O cliente paga mas nunca mais volta.</div>
         <span class="dor-cost">Relacionamento vale mais do que uma dívida mal cobrada</span>
-      </div>
-      <div class="dor-card">
-        <div class="dor-icon">📋</div>
-        <div class="dor-title">Não sabe como negativar</div>
-        <div class="dor-text">Serasa, SPC, Boa Vista — você sabe que existe, mas nunca soube exatamente como usar. A ameaça não tem peso.</div>
-        <span class="dor-cost">Negativação aumenta em 3x a chance de recebimento</span>
       </div>
     </div>
   </div>
@@ -690,7 +668,6 @@
             </div>
             <div style="display:flex;gap:6px;">
               <div style="background:#1E40AF;color:#fff;font-size:10px;padding:5px 10px;border-radius:8px;font-weight:700;">📊 Painel</div>
-              <div style="background:#F1F5F9;color:#64748B;font-size:10px;padding:5px 10px;border-radius:8px;font-weight:700;">📅 Calendário</div>
             </div>
           </div>
           <div class="mock-dash-cards">
@@ -772,14 +749,14 @@
               <div class="mock-avatar" style="background:#FEE2E2;color:#DC2626;">M</div>
               <div>
                 <div class="mock-client-name">Maria Fernanda</div>
-                <div class="mock-client-sub">⚠️ 14 dias em atraso · 💬 2 msgs</div>
+                <div class="mock-client-sub">⚠️ 14 dias em atraso</div>
               </div>
             </div>
             <div>
               <div class="mock-client-val" style="color:#DC2626;">R$1.200</div>
               <div class="mock-btns">
-                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">👁 Ver</span>
-                <span class="mock-btn" style="background:#25D366;color:#fff;">Chat</span>
+                <span class="mock-btn" style="background:#EFF6FF;color:#1E40AF;">📊 Régua</span>
+                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">✏️ Editar</span>
                 <span class="mock-btn" style="background:#16A34A;color:#fff;">Cobrar</span>
               </div>
             </div>
@@ -789,14 +766,14 @@
               <div class="mock-avatar" style="background:#FEE2E2;color:#DC2626;">A</div>
               <div>
                 <div class="mock-client-name">Ana Paula Costa</div>
-                <div class="mock-client-sub">⚠️ 19 dias em atraso · 💬 3 msgs</div>
+                <div class="mock-client-sub">⚠️ 19 dias em atraso</div>
               </div>
             </div>
             <div>
               <div class="mock-client-val" style="color:#DC2626;">R$2.100</div>
               <div class="mock-btns">
-                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">👁 Ver</span>
-                <span class="mock-btn" style="background:#25D366;color:#fff;">Chat</span>
+                <span class="mock-btn" style="background:#EFF6FF;color:#1E40AF;">📊 Régua</span>
+                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">✏️ Editar</span>
                 <span class="mock-btn" style="background:#16A34A;color:#fff;">Cobrar</span>
               </div>
             </div>
@@ -812,8 +789,8 @@
             <div>
               <div class="mock-client-val" style="color:#D97706;">R$850</div>
               <div class="mock-btns">
-                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">👁 Ver</span>
-                <span class="mock-btn" style="background:#25D366;color:#fff;">Chat</span>
+                <span class="mock-btn" style="background:#EFF6FF;color:#1E40AF;">📊 Régua</span>
+                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">✏️ Editar</span>
                 <span class="mock-btn" style="background:#16A34A;color:#fff;">Cobrar</span>
               </div>
             </div>
@@ -829,61 +806,13 @@
             <div>
               <div class="mock-client-val" style="color:#16A34A;">R$430</div>
               <div class="mock-btns">
-                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">👁 Ver</span>
-                <span class="mock-btn" style="background:#25D366;color:#fff;">Chat</span>
+                <span class="mock-btn" style="background:#EFF6FF;color:#1E40AF;">📊 Régua</span>
+                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">✏️ Editar</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="screen-caption">👁 "Ver" mostra histórico completo de conversas com o cliente</div>
-      </div>
-
-      <!-- SCREEN 3: ESPELHO DE CONVERSA -->
-      <div class="screen-card">
-        <div class="screen-label">
-          <div class="screen-dot" style="background:#FF5F57;"></div>
-          <div class="screen-dot" style="background:#FFBD2E;"></div>
-          <div class="screen-dot" style="background:#28C840;"></div>
-          <span style="margin-left:4px;">Espelho da conversa — WhatsApp integrado</span>
-        </div>
-        <div class="screen-body">
-          <div class="mock-chat-header">
-            <div class="mock-chat-avatar">M</div>
-            <div>
-              <div class="mock-chat-name">Maria Fernanda</div>
-              <div class="mock-chat-status">(44) 98712-5544 · Atrasado · R$1.200</div>
-            </div>
-          </div>
-          <div class="mock-chat-actions">
-            <span class="mock-chat-action" style="background:#25D366;color:#fff;">📤 Cobrar</span>
-            <span class="mock-chat-action" style="background:#F59E0B;color:#fff;">🔄 Rolar</span>
-            <span class="mock-chat-action" style="background:#16A34A;color:#fff;">✅ Pago</span>
-            <span class="mock-chat-action" style="background:#7C3AED;color:#fff;">📎 Comprovante</span>
-            <span class="mock-chat-action" style="background:#128C7E;color:#fff;">💬 WhatsApp</span>
-          </div>
-          <div class="mock-chat-body">
-            <div class="mock-msg" style="background:#F1F5F9;align-self:flex-start;">
-              <div style="font-size:9px;color:#94A3B8;font-weight:700;margin-bottom:3px;">🤖 SISTEMA</div>
-              <div class="mock-msg-text">Olá Maria 😊 A Look Up Store identificou uma parcela de R$300 em aberto. Regularize agora!</div>
-              <div class="mock-msg-time">18/06 09:12 ✓✓</div>
-            </div>
-            <div class="mock-msg" style="background:#DBEAFE;align-self:flex-end;">
-              <div style="font-size:9px;color:#1E40AF;font-weight:700;margin-bottom:3px;">Você</div>
-              <div class="mock-msg-text">Oi Maria! Conseguiu verificar sobre o pagamento? 😊</div>
-              <div class="mock-msg-time">15/06 14:22 ✓</div>
-            </div>
-            <div class="mock-msg" style="background:#F0FDF4;align-self:flex-start;">
-              <div style="font-size:9px;color:#16A34A;font-weight:700;margin-bottom:3px;">Maria Fernanda</div>
-              <div class="mock-msg-text">Sim, vou pagar na sexta!</div>
-              <div class="mock-msg-time">15/06 17:10 ✓✓</div>
-            </div>
-          </div>
-          <div class="mock-chat-input">
-            <div class="mock-input">Digite uma mensagem...</div>
-            <div class="mock-send" style="font-size:12px;">➤</div>
-          </div>
-        </div>
-        <div class="screen-caption">💬 Veja e responda conversas direto do painel, sem sair do sistema</div>
+        <div class="screen-caption">📊 Botão "Régua" mostra as 5 etapas de cobrança daquele cliente, uma por uma</div>
       </div>
 
     </div>
@@ -925,7 +854,7 @@
         <div class="step-num">4</div>
         <div class="step-content">
           <h3>O sistema cobra no lugar certo, na hora certa</h3>
-          <p>A régua automática dispara as mensagens nos dias programados: D-3, D0, D+7, D+15 e D+30. Cada mensagem com o tom adequado ao momento.</p>
+          <p>A régua automática dispara as mensagens nos dias programados: D-3, D0, D+3, D+15 e D+30. Cada mensagem com o tom adequado ao momento.</p>
           <span class="step-tag">🤖 Totalmente automático</span>
         </div>
       </div>
@@ -961,7 +890,7 @@
 
 A <strong>Look Up Store</strong> identificou uma parcela de <strong>R$ 350,00</strong> com vencimento em <strong>30/06/2026</strong>.
 
-Para regularizar e evitar restrições no seu CPF, pague agora:</p>
+Para regularizar, pague agora:</p>
           <div class="wpp-pix">💳 Pix: (44) 99999-0000 · Valor: R$ 350,00</div>
           <div class="wpp-time">09:14 ✓✓</div>
         </div>
@@ -986,25 +915,25 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(30,64,175,0.08);border-color:rgba(30,64,175,0.3);color:#1E40AF;">📅</div>
         <div class="regua-label" style="color:#1E40AF;">D0</div>
-        <div class="regua-desc">Cobrança no dia do vencimento</div>
+        <div class="regua-desc">Cobrança urgente no dia do vencimento</div>
       </div>
       <div class="regua-connector"></div>
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(217,119,6,0.08);border-color:rgba(217,119,6,0.3);color:#D97706;">⚠️</div>
-        <div class="regua-label" style="color:#D97706;">D+7</div>
-        <div class="regua-desc">Tom urgente após 7 dias</div>
+        <div class="regua-label" style="color:#D97706;">D+3</div>
+        <div class="regua-desc">Mensagem cordial, 3 dias em atraso</div>
       </div>
       <div class="regua-connector"></div>
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(220,38,38,0.08);border-color:rgba(220,38,38,0.3);color:#DC2626;">🚨</div>
         <div class="regua-label" style="color:#DC2626;">D+15</div>
-        <div class="regua-desc">Último aviso antes da negativação</div>
+        <div class="regua-desc">Tom firme, 15 dias em atraso</div>
       </div>
       <div class="regua-connector"></div>
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.3);color:#7C3AED;">⛔</div>
         <div class="regua-label" style="color:#7C3AED;">D+30</div>
-        <div class="regua-desc">Alerta de negativação Serasa/SPC</div>
+        <div class="regua-desc">Aviso final, 30 dias em atraso</div>
       </div>
     </div>
     <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;max-width:600px;margin:0 auto;display:flex;gap:12px;align-items:flex-start;text-align:left;">
@@ -1029,9 +958,9 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
         <div class="feature-text">As cobranças saem do número da sua empresa. O devedor recebe e reconhece quem está cobrando — não uma empresa desconhecida.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <div class="feature-title">Espelho das conversas</div>
-        <div class="feature-text">Veja o histórico completo de cada cliente, responda mensagens e tome ação — cobrar novamente, rolar dívida, confirmar pagamento — tudo sem sair do sistema.</div>
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Relatório completo</div>
+        <div class="feature-text">Acompanhe taxa de inadimplência, taxa de recuperação e a lista completa de clientes atrasados — dados reais para decidir, não achismo.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📋</div>
@@ -1044,9 +973,9 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
         <div class="feature-text">Sua chave Pix aparece em todas as mensagens automaticamente. O devedor recebe, já tem o Pix na mão e não tem desculpa para não pagar.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <div class="feature-title">Negativação Serasa / SPC</div>
-        <div class="feature-text">Gere o documento oficial de negativação com um clique. Pronto para levar à Associação Comercial. Negativação aumenta 3x a chance de recebimento.</div>
+        <div class="feature-icon">🚫</div>
+        <div class="feature-title">Blacklist inteligente</div>
+        <div class="feature-text">Cliente que nunca paga ou número errado? Coloque na blacklist e ele para de receber cobrança automaticamente. Simples, interno, sem burocracia.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⏸</div>
@@ -1057,44 +986,17 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
   </div>
 </section>
 
-<!-- DEPOIMENTOS -->
+<!-- DE LOJISTA PRA LOJISTA -->
 <section id="prova">
   <div class="container">
-    <div class="section-label">Quem já usa</div>
-    <h2>O que nossos clientes falam<br>depois de começar.</h2>
-    <div class="testimonials">
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"No primeiro mês recuperei R$2.300 que estavam parados há mais de 60 dias. Eu tinha vergonha de cobrar pessoalmente. O sistema manda e eu fico fora do conflito."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">M</div>
-          <div>
-            <div class="author-name">Marcos Oliveira</div>
-            <div class="author-biz">Barbearia — Cascavel, PR</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Meu consultório tinha mais de R$4.000 em consultas não pagas. Eu evitava cobrar para não constranger os pacientes. Agora o sistema cuida disso e eu mantenho o relacionamento."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">D</div>
-          <div>
-            <div class="author-name">Dra. Fernanda Lima</div>
-            <div class="author-biz">Consultório odontológico — Maringá, PR</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"A mensagem vai do número do meu salão. A cliente reconhece e responde. Tentei outros sistemas mas ninguém abria porque era número estranho. Aqui funciona de verdade."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">A</div>
-          <div>
-            <div class="author-name">Ana Paula Ferreira</div>
-            <div class="author-biz">Salão de beleza — Palotina, PR</div>
-          </div>
-        </div>
+    <div class="section-label">De lojista pra lojista</div>
+    <h2>Criado por quem também<br>vive essa dor.</h2>
+    <div class="founder-card">
+      <div class="founder-avatar">T</div>
+      <div>
+        <div class="founder-name">Tiago Ribeiro Cabral</div>
+        <div class="founder-role">Fundador do CobrarFácil · Palotina, PR</div>
+        <p class="founder-text">Antes do CobrarFácil, eu tocava a Look Up Store e a Look Up Barber Shop aqui em Palotina — e vivia o mesmo problema que você: cliente que compra fiado, cliente que atrasa, e a vergonha de cobrar pessoalmente quem eu via toda semana. Criei o CobrarFácil pra resolver isso primeiro nos meus próprios negócios. Hoje ele está disponível pra qualquer pequeno negócio brasileiro que sofre com a mesma dor.</p>
       </div>
     </div>
   </div>
@@ -1148,7 +1050,7 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
         <div class="price-trial">🏆 Economize R$600/ano · 7 dias grátis</div>
         <ul class="price-features">
           <li>Tudo do trimestral</li>
-          <li>Negativação ilimitada</li>
+          <li>Clientes ilimitados</li>
           <li>Relatórios avançados</li>
           <li>Novidades em primeira mão</li>
         </ul>
@@ -1181,11 +1083,7 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">O que acontece quando o devedor responde?<span class="arrow">+</span></button>
-        <div class="faq-a">A resposta aparece direto no espelho de conversa dentro do CobrarFácil. Você negocia diretamente, pode rolar a dívida, confirmar pagamento ou cobrar novamente — tudo sem sair do sistema.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Como funciona a negativação?<span class="arrow">+</span></button>
-        <div class="faq-a">O sistema gera um documento oficial com todos os dados do devedor, valores e declaração legal. Você leva esse documento para a Associação Comercial ou CDL da sua cidade e eles fazem a inclusão no Serasa ou SPC.</div>
+        <div class="faq-a">A resposta chega direto no WhatsApp do seu negócio, como qualquer mensagem normal. Você conversa por lá, e quando o cliente pagar, é só marcar "Pago" no sistema — ou usar o botão "Cobrar" pra mandar outra mensagem, ou "Prorrogar" pra dar um novo prazo.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Meus dados ficam seguros?<span class="arrow">+</span></button>
@@ -1208,7 +1106,7 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
   <div class="container">
     <div class="section-label">Pronto para receber?</div>
     <h2>Quanto você está<br>deixando na mesa?</h2>
-    <p class="section-sub">Enquanto você lê isso, o CobrarFácil está mandando cobranças para os devedores dos nossos +2.800 clientes ativos. Você ainda está fazendo isso na mão — ou não está fazendo.</p>
+    <p class="section-sub">O Brasil tem mais de 81 milhões de pessoas negativadas agora — e 8,7 milhões de empresas inadimplentes. Enquanto você lê isso, o dinheiro que alguém te deve continua parado. Você ainda está cobrando na mão — ou não está cobrando.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
       <a href="#preco" class="btn-primary" style="font-size:16px;padding:16px 32px;">Testar grátis agora →</a>
       <a href="https://app.cobrarfacil.com.br" class="btn-entrar" style="font-size:15px;padding:16px 28px;">🔑 Já sou cliente — Entrar</a>
@@ -1236,27 +1134,23 @@ Para regularizar e evitar restrições no seu CPF, pague agora:</p>
 </footer>
 
 <script>
-  function animateCounter(el, target, prefix, suffix, duration) {
+  function animateCounter(el, target, decimals, suffix, duration) {
     let start = 0;
     const step = target / (duration / 16);
     const timer = setInterval(() => {
       start += step;
       if (start >= target) { start = target; clearInterval(timer); }
-      if (prefix === 'R$') {
-        el.textContent = 'R$' + Math.floor(start).toLocaleString('pt-BR');
-      } else {
-        el.textContent = Math.floor(start).toLocaleString('pt-BR') + suffix;
-      }
+      el.textContent = start.toFixed(decimals).replace('.', ',') + suffix;
     }, 16);
   }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        animateCounter(document.getElementById('cnt1'), 1840000, 'R$', '', 2500);
-        animateCounter(document.getElementById('cnt2'), 94200, '', '', 2000);
-        animateCounter(document.getElementById('cnt3'), 68, '', '%', 1600);
-        animateCounter(document.getElementById('cnt4'), 2847, '', '', 1800);
+        animateCounter(document.getElementById('cnt1'), 81.7, 1, 'M', 2200);
+        animateCounter(document.getElementById('cnt2'), 8.7, 1, 'M', 2000);
+        animateCounter(document.getElementById('cnt3'), 94, 0, '%', 1600);
+        animateCounter(document.getElementById('cnt4'), 71, 0, '%', 1600);
         observer.disconnect();
       }
     });
