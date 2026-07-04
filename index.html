@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CobrarFácil — Recupere o dinheiro que você já deu como perdido</title>
   <meta name="description" content="Sistema automático de cobrança via WhatsApp. Recupere dinheiro parado e controle inadimplentes de forma simples. Para pequenos negócios." />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -18,9 +21,9 @@
       --card:    #FFFFFF;
       --blue:    #1E40AF;
       --blue2:   #2563EB;
-      --green:   #059669;
-      --green2:  #10B981;
-      --dark:    #0F172A;
+      --green:   #0E8F63;
+      --green2:  #4ADE80;
+      --dark:    #0B2B24;
       --text:    #374151;
       --muted:   #6B7280;
       --border:  #E2E8F0;
@@ -51,11 +54,9 @@
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .logo-icon {
       width: 38px; height: 38px;
-      background: linear-gradient(135deg, #10B981, #059669);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 900; color: #fff;
-      letter-spacing: -0.5px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
     }
     .logo-name { font-size: 18px; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
     .logo-sub { font-size: 9px; font-weight: 700; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: -2px; }
@@ -186,7 +187,7 @@
       margin: 0 auto;
     }
     .mockup-header {
-      background: #0F172A;
+      background: #0B2B24;
       padding: 10px 16px;
       display: flex; align-items: center; gap: 6px;
     }
@@ -197,16 +198,16 @@
     .mini-panel { padding: 14px; }
     .mini-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .mini-logo { display: flex; align-items: center; gap: 6px; }
-    .mini-logo-icon { width: 24px; height: 24px; background: linear-gradient(135deg, #10B981, #059669); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; color: #fff; }
-    .mini-logo-text { font-size: 11px; font-weight: 800; color: #0F172A; }
+    .mini-logo-icon { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; display: block; }
+    .mini-logo-text { font-size: 11px; font-weight: 800; color: #0B2B24; }
     .mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
     .mini-card { background: #fff; border-radius: 8px; padding: 8px 10px; border: 1px solid #F1F5F9; }
-    .mini-card-val { font-size: 13px; font-weight: 800; color: #0F172A; }
+    .mini-card-val { font-size: 13px; font-weight: 800; color: #0B2B24; }
     .mini-card-lbl { font-size: 9px; color: #94A3B8; }
     .mini-alert { background: #FEF2F2; border-radius: 8px; padding: 7px 10px; display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
     .mini-alert-txt { font-size: 10px; color: #DC2626; font-weight: 600; }
     .mini-client { background: #fff; border-radius: 8px; padding: 8px 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; border: 1px solid #F1F5F9; }
-    .mini-client-name { font-size: 11px; font-weight: 700; color: #0F172A; }
+    .mini-client-name { font-size: 11px; font-weight: 700; color: #0B2B24; }
     .mini-client-val { font-size: 11px; font-weight: 800; color: #DC2626; }
     .mini-badge { font-size: 8px; font-weight: 700; padding: 2px 6px; border-radius: 99px; }
 
@@ -218,7 +219,7 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.12);
       font-size: 12px;
       font-weight: 700;
-      color: #0F172A;
+      color: #0B2B24;
       white-space: nowrap;
     }
     .float-card.left { left: -60px; top: 30%; }
@@ -291,7 +292,7 @@
     .mock-stat-val { font-size: 12px; font-weight: 800; }
     .mock-badge { font-size: 9px; padding: 2px 7px; border-radius: 99px; font-weight: 700; }
     .mock-progress { height: 6px; background: #F1F5F9; border-radius: 99px; overflow: hidden; margin-top: 8px; }
-    .mock-progress-bar { height: 100%; background: linear-gradient(90deg, #059669, #10B981); border-radius: 99px; }
+    .mock-progress-bar { height: 100%; background: linear-gradient(90deg, #0E8F63, #4ADE80); border-radius: 99px; }
 
     .mock-client-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #F8FAFC; }
     .mock-client-info { display: flex; align-items: center; gap: 8px; }
@@ -304,7 +305,7 @@
 
     .mock-wpp-wrap { background: #E5DDD5; border-radius: 10px; padding: 12px; }
     .mock-wpp-bubble { background: #fff; border-radius: 10px 10px 10px 0; padding: 10px 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); max-width: 90%; }
-    .mock-wpp-text { font-size: 12px; color: #0F172A; line-height: 1.6; white-space: pre-wrap; }
+    .mock-wpp-text { font-size: 12px; color: #0B2B24; line-height: 1.6; white-space: pre-wrap; }
     .mock-wpp-time { font-size: 9px; color: #94A3B8; text-align: right; margin-top: 4px; }
     .mock-wpp-pix { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 8px; padding: 8px 12px; margin-top: 8px; font-size: 11px; color: #166534; font-weight: 600; }
 
@@ -358,7 +359,7 @@
     .wpp-status { font-size: 10px; color: #B2DFDB; }
     .wpp-body { background: #E5DDD5; padding: 16px 14px; min-height: 180px; }
     .wpp-bubble { background: #fff; border-radius: 10px 10px 10px 0; padding: 10px 14px; max-width: 92%; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    .wpp-bubble p { font-size: 13px; color: #0F172A; line-height: 1.6; white-space: pre-wrap; }
+    .wpp-bubble p { font-size: 13px; color: #0B2B24; line-height: 1.6; white-space: pre-wrap; }
     .wpp-time { font-size: 10px; color: #94A3B8; text-align: right; margin-top: 5px; }
     .wpp-pix { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 8px; padding: 9px 12px; margin-top: 10px; font-size: 12px; color: #166534; font-weight: 600; }
 
@@ -416,7 +417,7 @@
     .faq-a.open { display: block; }
 
     /* ── CTA FINAL ── */
-    #cta-final { text-align: center; background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #1E40AF 100%); }
+    #cta-final { text-align: center; background: linear-gradient(135deg, #0B2B24 0%, #1E3A5F 50%, #1E40AF 100%); }
     #cta-final h2 { color: #fff; }
     #cta-final .section-label { color: #93C5FD; }
     #cta-final .section-sub { color: #CBD5E1; margin: 16px auto 36px; }
@@ -457,7 +458,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">
-    <div class="logo-icon">C$</div>
+    <img class="logo-icon" src="/logo-192.png" alt="CobrarFácil" />
     <div>
       <span class="logo-name">CobrarFácil</span>
       <span class="logo-sub">Sistema de Cobrança</span>
@@ -483,7 +484,7 @@
         <p class="hero-sub">
           O CobrarFácil envia cobranças automáticas pelo WhatsApp do seu negócio enquanto você faz o que importa. Sem vergonha. Sem esquecimento. Sem conflito.
         </p>
-        <p style="font-size: 14px; color: #059669; font-weight: 600; font-style: italic; margin: -20px 0 28px;">
+        <p style="font-size: 14px; color: #0E8F63; font-weight: 600; font-style: italic; margin: -20px 0 28px;">
           Imagine abrir o WhatsApp de manhã e ver: "Pagamento recebido" — sem você ter mandado uma única mensagem.
         </p>
         <div class="hero-actions">
@@ -524,7 +525,7 @@
               <div class="mini-panel">
                 <div class="mini-header">
                   <div class="mini-logo">
-                    <div class="mini-logo-icon">C$</div>
+                    <img class="mini-logo-icon" src="/logo-192.png" alt="CobrarFácil" />
                     <span class="mini-logo-text">CobrarFácil</span>
                   </div>
                   <span style="font-size:9px;background:#DCFCE7;color:#16A34A;padding:2px 6px;border-radius:99px;font-weight:700;">Pro</span>
@@ -581,7 +582,7 @@
                 </div>
 
                 <div style="height:6px;background:#F1F5F9;border-radius:99px;overflow:hidden;margin-top:10px;">
-                  <div style="width:27%;height:100%;background:linear-gradient(90deg,#059669,#10B981);border-radius:99px;"></div>
+                  <div style="width:27%;height:100%;background:linear-gradient(90deg,#0E8F63,#4ADE80);border-radius:99px;"></div>
                 </div>
                 <div style="display:flex;justify-content:space-between;margin-top:4px;">
                   <span style="font-size:9px;color:#94A3B8;">Taxa de recebimento</span>
@@ -668,7 +669,7 @@
         <div class="screen-body">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
             <div>
-              <div style="font-size:15px;font-weight:800;color:#0F172A;">Painel Geral</div>
+              <div style="font-size:15px;font-weight:800;color:#0B2B24;">Painel Geral</div>
               <div style="font-size:11px;color:#94A3B8;">Sexta-feira, 26 de junho de 2026</div>
             </div>
             <div style="display:flex;gap:6px;">
@@ -702,7 +703,7 @@
             <span style="font-size:11px;color:#DC2626;font-weight:600;">2 clientes em atraso — R$3.150 em risco · Ver todos →</span>
           </div>
           <div style="background:#F8FAFC;border-radius:10px;padding:12px;">
-            <div style="font-size:12px;font-weight:700;margin-bottom:8px;color:#0F172A;">Situação dos Clientes</div>
+            <div style="font-size:12px;font-weight:700;margin-bottom:8px;color:#0B2B24;">Situação dos Clientes</div>
             <div style="display:flex;gap:6px;margin-bottom:10px;">
               <div style="flex:1;background:#F0FDF4;border-radius:8px;padding:8px;text-align:center;cursor:pointer;">
                 <div style="font-size:18px;font-weight:800;color:#16A34A;">2</div>
@@ -738,7 +739,7 @@
         <div class="screen-body">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
             <div>
-              <div style="font-size:15px;font-weight:800;color:#0F172A;">Clientes</div>
+              <div style="font-size:15px;font-weight:800;color:#0B2B24;">Clientes</div>
               <div style="font-size:11px;color:#94A3B8;">6 cadastrados · 2 em atraso</div>
             </div>
             <div style="background:#1E40AF;color:#fff;font-size:10px;padding:6px 12px;border-radius:8px;font-weight:700;">+ Novo</div>
@@ -912,8 +913,8 @@ Para regularizar, pague agora:</p>
     <p class="section-sub" style="margin:0 auto 0;">O sistema sabe o que mandar e quando mandar. Você só acompanha o dinheiro entrando.</p>
     <div class="regua-line">
       <div class="regua-step">
-        <div class="regua-ball" style="background:rgba(5,150,105,0.08);border-color:rgba(5,150,105,0.3);color:#059669;">🔔</div>
-        <div class="regua-label" style="color:#059669;">D-3</div>
+        <div class="regua-ball" style="background:rgba(5,150,105,0.08);border-color:rgba(5,150,105,0.3);color:#0E8F63;">🔔</div>
+        <div class="regua-label" style="color:#0E8F63;">D-3</div>
         <div class="regua-desc">Lembrete amigável antes do vencimento</div>
       </div>
       <div class="regua-connector"></div>
@@ -1014,11 +1015,11 @@ Para regularizar, pague agora:</p>
 </section>
 
 <!-- MOMENTO -->
-<section style="background: #0F172A; text-align: center; padding: 64px 6vw;">
+<section style="background: #0B2B24; text-align: center; padding: 64px 6vw;">
   <div class="container">
-    <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #10B981; text-transform: uppercase; margin-bottom: 18px;">São 8h03 da manhã</div>
+    <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #4ADE80; text-transform: uppercase; margin-bottom: 18px;">São 8h03 da manhã</div>
     <div style="font-size: clamp(20px, 3vw, 30px); font-weight: 800; color: #fff; max-width: 680px; margin: 0 auto; line-height: 1.4;">
-      Três cobranças já saíram. Uma já foi respondida: <span style="color: #10B981;">"Consegui pagar, obrigada por lembrar!"</span>
+      Três cobranças já saíram. Uma já foi respondida: <span style="color: #4ADE80;">"Consegui pagar, obrigada por lembrar!"</span>
     </div>
     <div style="font-size: 15px; color: #94A3B8; margin-top: 16px;">Você não precisou escrever uma palavra.</div>
   </div>
@@ -1144,7 +1145,7 @@ Para regularizar, pague agora:</p>
 <!-- FOOTER -->
 <footer>
   <a href="#" class="footer-logo">
-    <div class="logo-icon">C$</div>
+    <img class="logo-icon" src="/logo-192.png" alt="CobrarFácil" />
     <div>
       <span class="logo-name" style="font-size:15px;">CobrarFácil</span>
       <span class="logo-sub">Sistema de Cobrança</span>
