@@ -361,7 +361,12 @@
     .wpp-bubble { background: #fff; border-radius: 10px 10px 10px 0; padding: 10px 14px; max-width: 92%; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .wpp-bubble p { font-size: 13px; color: #0B2B24; line-height: 1.6; white-space: pre-wrap; }
     .wpp-time { font-size: 10px; color: #94A3B8; text-align: right; margin-top: 5px; }
-    .wpp-pix { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 8px; padding: 9px 12px; margin-top: 10px; font-size: 12px; color: #166534; font-weight: 600; }
+    .wpp-qr-box { background: #fff; border: 2px solid #E2E8F0; border-radius: 8px; padding: 10px; width: 140px; margin: 0 auto; }
+    .wpp-qr-pattern { width: 100%; aspect-ratio: 1; background:
+        repeating-linear-gradient(0deg, #0F172A 0 4px, transparent 4px 8px),
+        repeating-linear-gradient(90deg, #0F172A 0 4px, transparent 4px 8px);
+      background-size: 100% 100%; opacity: 0.85; border-radius: 3px; }
+    .wpp-copiaecola { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 12px; font-family: 'Courier New', monospace; font-size: 10.5px; color: #475569; word-break: break-all; line-height: 1.4; }
 
     /* ── POR QUE EXISTIMOS ── */
     #prova { background: #fff; }
@@ -466,7 +471,7 @@
   </a>
   <div class="nav-btns">
     <a href="https://app.cobrarfacil.com.br" class="nav-login">Entrar →</a>
-    <a href="#preco" class="nav-cta">Testar grátis 7 dias</a>
+    <a href="#preco" class="nav-cta">Assinar agora</a>
   </div>
 </nav>
 
@@ -488,12 +493,12 @@
           Imagine abrir o WhatsApp de manhã e ver: "Pagamento recebido" — sem você ter mandado uma única mensagem.
         </p>
         <div class="hero-actions">
-          <a href="#preco" class="btn-primary">Testar grátis — 7 dias →</a>
+          <a href="#preco" class="btn-primary">Quero começar agora →</a>
           <a href="https://app.cobrarfacil.com.br" class="btn-entrar">🔑 Já sou cliente</a>
           <a href="#demo" class="btn-ghost">Ver como funciona</a>
         </div>
         <div class="hero-proof">
-          <div class="proof-item">✓ <span>Sem cartão</span> para testar</div>
+          <div class="proof-item">✓ <span>Garantia de 7 dias</span> · reembolso total</div>
           <div class="proof-item">✓ <span>Vagas de lançamento</span> — preço sobe em breve</div>
           <div class="proof-item">✓ Configura em <span>10 minutos</span></div>
         </div>
@@ -860,7 +865,7 @@
         <div class="step-num">4</div>
         <div class="step-content">
           <h3>O sistema cobra no lugar certo, na hora certa</h3>
-          <p>A régua automática dispara as mensagens nos dias programados: D-3, D0, D+3, D+15 e D+30. Cada mensagem com o tom adequado ao momento.</p>
+          <p>O sistema manda a mensagem certa no momento certo — antes de vencer, no dia, e continua cobrando depois, sem parar, até o cliente pagar.</p>
           <span class="step-tag">🤖 Totalmente automático</span>
         </div>
       </div>
@@ -881,7 +886,7 @@
   <div class="container">
     <div class="section-label">Preview real</div>
     <h2>Assim chega no celular<br>do seu devedor.</h2>
-    <p class="section-sub" style="margin:0 auto 0;">A mensagem sai do número do seu negócio. O devedor reconhece quem está cobrando e leva a sério.</p>
+    <p class="section-sub" style="margin:0 auto 0;">Não é um texto solto pedindo Pix. É QR Code de verdade, cai direto na sua conta, você confere na hora. É isso que dá credibilidade.</p>
     <div class="demo-wrap">
       <div class="wpp-header">
         <div class="wpp-avatar">S</div>
@@ -892,14 +897,28 @@
       </div>
       <div class="wpp-body">
         <div class="wpp-bubble">
-          <p>Olá João 😊
-
-A <strong>Studio Bella</strong> identificou uma parcela de <strong>R$ 350,00</strong> com vencimento em <strong>30/06/2026</strong>.
-
-Para regularizar, pague agora:</p>
-          <div class="wpp-pix">💳 Pix: (44) 99999-0000 · Valor: R$ 350,00</div>
+          <p><strong>Studio Bella</strong></p>
+          <p style="margin-top:6px;">Olá João! 😊 Passando para lembrar que sua conta de <strong>R$ 350,00</strong> vence hoje. Qualquer dúvida, é só chamar!</p>
           <div class="wpp-time">09:14 ✓✓</div>
         </div>
+        <div class="wpp-bubble" style="margin-top:8px;">
+          <div class="wpp-qr-box">
+            <div class="wpp-qr-pattern"></div>
+          </div>
+          <p style="margin-top:8px;">💳 <strong>Pague R$ 350,00 via Pix</strong><br>📱 Escaneie o QR Code acima ou copie o código na mensagem a seguir 👇<br>✅ O valor já vem preenchido automaticamente no seu banco.<br>📸 Após pagar, envie o comprovante aqui mesmo.</p>
+          <div class="wpp-time">09:14 ✓✓</div>
+        </div>
+        <div class="wpp-bubble" style="margin-top:8px;">
+          <div class="wpp-copiaecola">00020126580014BR.GOV.BCB.PIX0136a629...5204000053039865802BR...</div>
+          <div class="wpp-time">09:14 ✓✓</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:600px;margin:20px auto 0;background:#F0FDF4;border:1px solid #86EFAC;border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;text-align:left;">
+      <span style="font-size:20px;flex-shrink:0;">🏦</span>
+      <div>
+        <div style="font-weight:700;font-size:14px;color:var(--dark);margin-bottom:4px;">O Pix cai direto na SUA conta.</div>
+        <div style="font-size:13px;color:var(--text);">É a sua própria chave Pix, ligada ao Banco Central. O dinheiro não passa pelo CobrarFácil — vai direto pro seu banco, e você confere o recebimento na hora, no seu próprio aplicativo.</div>
       </div>
     </div>
   </div>
@@ -909,37 +928,45 @@ Para regularizar, pague agora:</p>
 <section id="regua">
   <div class="container" style="text-align:center;">
     <div class="section-label">Régua automática</div>
-    <h2>5 momentos certos.<br>Sem você fazer nada.</h2>
-    <p class="section-sub" style="margin:0 auto 0;">O sistema sabe o que mandar e quando mandar. Você só acompanha o dinheiro entrando.</p>
+    <h2>O sistema cobra sozinho.<br>Até o cliente pagar.</h2>
+    <div style="max-width:640px;margin:0 auto 36px;background:#0B2B24;border-radius:16px;padding:22px 26px;text-align:left;">
+      <p style="color:#fff;font-size:15px;line-height:1.7;margin:0;">
+        Sem termo técnico: o sistema manda um lembrete <strong style="color:#4ADE80;">3 dias antes</strong> de vencer, cobra <strong style="color:#4ADE80;">no dia</strong>, e continua cobrando <strong style="color:#4ADE80;">3, 15 e 30 dias depois</strong> — com um tom cada vez mais firme.
+      </p>
+      <p style="color:#CBD5E1;font-size:14px;line-height:1.7;margin-top:12px;">
+        Depois dos 30 dias, o sistema <strong style="color:#fff;">não desiste</strong>: continua mandando cobrança a cada 15 dias, para sempre, até o cliente pagar — ou até você mesmo decidir suspender.
+      </p>
+    </div>
+    <p class="section-sub" style="margin:0 auto 0;">Cada etapa em detalhe:</p>
     <div class="regua-line">
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(5,150,105,0.08);border-color:rgba(5,150,105,0.3);color:#0E8F63;">🔔</div>
-        <div class="regua-label" style="color:#0E8F63;">D-3</div>
+        <div class="regua-label" style="color:#0E8F63;">3 dias antes</div>
         <div class="regua-desc">Lembrete amigável antes do vencimento</div>
       </div>
       <div class="regua-connector"></div>
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(30,64,175,0.08);border-color:rgba(30,64,175,0.3);color:#1E40AF;">📅</div>
-        <div class="regua-label" style="color:#1E40AF;">D0</div>
+        <div class="regua-label" style="color:#1E40AF;">No dia</div>
         <div class="regua-desc">Cobrança urgente no dia do vencimento</div>
       </div>
       <div class="regua-connector"></div>
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(217,119,6,0.08);border-color:rgba(217,119,6,0.3);color:#D97706;">⚠️</div>
-        <div class="regua-label" style="color:#D97706;">D+3</div>
-        <div class="regua-desc">Mensagem cordial, 3 dias em atraso</div>
+        <div class="regua-label" style="color:#D97706;">3 dias depois</div>
+        <div class="regua-desc">Mensagem cordial, já em atraso</div>
       </div>
       <div class="regua-connector"></div>
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(220,38,38,0.08);border-color:rgba(220,38,38,0.3);color:#DC2626;">🚨</div>
-        <div class="regua-label" style="color:#DC2626;">D+15</div>
-        <div class="regua-desc">Tom firme, 15 dias em atraso</div>
+        <div class="regua-label" style="color:#DC2626;">15 dias depois</div>
+        <div class="regua-desc">Tom firme, atraso já preocupante</div>
       </div>
       <div class="regua-connector"></div>
       <div class="regua-step">
-        <div class="regua-ball" style="background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.3);color:#7C3AED;">⛔</div>
-        <div class="regua-label" style="color:#7C3AED;">D+30</div>
-        <div class="regua-desc">Aviso final, 30 dias em atraso</div>
+        <div class="regua-ball" style="background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.3);color:#7C3AED;">🔁</div>
+        <div class="regua-label" style="color:#7C3AED;">30+ dias</div>
+        <div class="regua-desc">Repete a cada 15 dias — sem parar</div>
       </div>
     </div>
     <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;max-width:600px;margin:0 auto;display:flex;gap:12px;align-items:flex-start;text-align:left;">
@@ -1040,14 +1067,14 @@ Para regularizar, pague agora:</p>
         <div class="price-plan">MENSAL</div>
         <div class="price-amount"><sup>R$</sup>147</div>
         <div class="price-period">por mês</div>
-        <div class="price-trial">7 dias grátis · sem cartão</div>
+        <div class="price-trial">Garantia de 7 dias · reembolso total</div>
         <ul class="price-features">
           <li>Todas as funções</li>
           <li>Cobranças automáticas</li>
           <li>Suporte WhatsApp</li>
           <li>Atualizações gratuitas</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=mensal" class="price-cta outline">Testar grátis 7 dias →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=mensal" class="price-cta outline">Assinar agora →</a>
       </div>
 
       <div class="price-card destaque">
@@ -1055,28 +1082,28 @@ Para regularizar, pague agora:</p>
         <div class="price-plan">TRIMESTRAL</div>
         <div class="price-amount"><sup>R$</sup>119</div>
         <div class="price-period">/mês · R$357 a cada 3 meses</div>
-        <div class="price-trial">💰 Economize R$84 · 7 dias grátis</div>
+        <div class="price-trial">💰 Economize R$84 · garantia de 7 dias</div>
         <ul class="price-features">
           <li>Tudo do mensal</li>
           <li>Recuperação dívidas antigas</li>
           <li>Calendário financeiro</li>
           <li>Prioridade no suporte</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=trimestral" class="price-cta">Testar grátis 7 dias →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=trimestral" class="price-cta">Assinar agora →</a>
       </div>
 
       <div class="price-card">
         <div class="price-plan">ANUAL</div>
         <div class="price-amount"><sup>R$</sup>97</div>
         <div class="price-period">/mês · R$1.164/ano</div>
-        <div class="price-trial">🏆 Economize R$600/ano · 7 dias grátis</div>
+        <div class="price-trial">🏆 Economize R$600/ano · garantia de 7 dias</div>
         <ul class="price-features">
           <li>Tudo do trimestral</li>
           <li>Clientes ilimitados</li>
           <li>Relatórios avançados</li>
           <li>Novidades em primeira mão</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=anual" class="price-cta outline" style="background:#7C3AED;color:#fff;border:none;">Testar grátis 7 dias →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=anual" class="price-cta outline" style="background:#7C3AED;color:#fff;border:none;">Assinar agora →</a>
       </div>
     </div>
 
@@ -1117,7 +1144,7 @@ Para regularizar, pague agora:</p>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Posso pausar a cobrança de um cliente específico?<span class="arrow">+</span></button>
-        <div class="faq-a">Sim. Na tela de clientes você suspende um cliente com um clique — ou rola a dívida para uma nova data. Por exemplo: parar o D+30 de um cliente que está parcelando com você diretamente.</div>
+        <div class="faq-a">Sim. Na tela de clientes você suspende um cliente com um clique — ou rola a dívida para uma nova data. Por exemplo: parar a cobrança repetida de um cliente que está parcelando com você diretamente.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Posso cancelar quando quiser?<span class="arrow">+</span></button>
@@ -1134,11 +1161,11 @@ Para regularizar, pague agora:</p>
     <h2>Quanto você está<br>deixando na mesa?</h2>
     <p class="section-sub">O Brasil tem mais de 81 milhões de pessoas negativadas agora — e 8,7 milhões de empresas inadimplentes. Enquanto você lê isso, o dinheiro que alguém te deve continua parado. Você ainda está cobrando na mão — ou não está cobrando.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <a href="#preco" class="btn-primary" style="font-size:16px;padding:16px 32px;">Testar grátis agora →</a>
+      <a href="#preco" class="btn-primary" style="font-size:16px;padding:16px 32px;">Quero começar agora →</a>
       <a href="https://app.cobrarfacil.com.br" class="btn-entrar" style="font-size:15px;padding:16px 28px;">🔑 Já sou cliente — Entrar</a>
       <a href="https://wa.me/5544998970506?text=Quero+conhecer+o+CobrarFacil" style="background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.2);padding:16px 24px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;">📱 Falar com o suporte</a>
     </div>
-    <p style="margin-top:18px;font-size:12px;color:#94A3B8;">Sem cartão de crédito · Configura em 10 minutos · Cancele quando quiser</p>
+    <p style="margin-top:18px;font-size:12px;color:#94A3B8;">Garantia de 7 dias · Configura em 10 minutos · Cancele quando quiser</p>
   </div>
 </section>
 
