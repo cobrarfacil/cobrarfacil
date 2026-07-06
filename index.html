@@ -12,6 +12,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1358058159760621');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent', {
+    content_name: 'Landing CobrarFácil',
+    content_category: 'SaaS Cobranca Automatizada'
+  });
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1115,7 +1138,7 @@
           <li>Suporte WhatsApp</li>
           <li>Atualizações gratuitas</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=mensal" class="price-cta outline">Assinar agora →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=mensal" class="price-cta outline" onclick="trackInitiateCheckout('mensal', 147)">Assinar agora →</a>
       </div>
 
       <div class="price-card destaque">
@@ -1130,7 +1153,7 @@
           <li>Calendário financeiro</li>
           <li>Prioridade no suporte</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=trimestral" class="price-cta">Assinar agora →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=trimestral" class="price-cta" onclick="trackInitiateCheckout('trimestral', 357)">Assinar agora →</a>
       </div>
 
       <div class="price-card">
@@ -1144,7 +1167,7 @@
           <li>Relatórios avançados</li>
           <li>Novidades em primeira mão</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=anual" class="price-cta outline" style="background:#7C3AED;color:#fff;border:none;">Assinar agora →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=anual" class="price-cta outline" style="background:#7C3AED;color:#fff;border:none;" onclick="trackInitiateCheckout('anual', 1164)">Assinar agora →</a>
       </div>
     </div>
 
@@ -1232,6 +1255,18 @@
 </footer>
 
 <script>
+  function trackInitiateCheckout(plano, valor) {
+    if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'Plano ' + plano.charAt(0).toUpperCase() + plano.slice(1),
+        content_ids: [plano],
+        content_type: 'product',
+        currency: 'BRL',
+        value: valor
+      });
+    }
+  }
+
   function animateCounter(el, target, decimals, suffix, duration) {
     let start = 0;
     const step = target / (duration / 16);
