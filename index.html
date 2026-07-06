@@ -367,6 +367,10 @@
         repeating-linear-gradient(90deg, #0F172A 0 4px, transparent 4px 8px);
       background-size: 100% 100%; opacity: 0.85; border-radius: 3px; }
     .wpp-copiaecola { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 12px; font-family: 'Courier New', monospace; font-size: 10.5px; color: #475569; word-break: break-all; line-height: 1.4; }
+    .wpp-row-out { display: flex; justify-content: flex-end; margin-top: 8px; }
+    .wpp-bubble-out { display: inline-block; background: #DCF8C6; border-radius: 10px 10px 0 10px; padding: 10px 14px; max-width: 82%; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .wpp-bubble-out p { font-size: 13px; color: #0B2B24; line-height: 1.6; }
+    .wpp-bubble-out .wpp-time { text-align: right; }
 
     /* ── POR QUE EXISTIMOS ── */
     #prova { background: #fff; }
@@ -451,6 +455,7 @@
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .btn-primary, .btn-entrar { width: 100%; justify-content: center; }
       .founder-card { flex-direction: column; align-items: center; text-align: center; }
+      .regua-info-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 480px) {
       .price-card { padding: 24px 20px; }
@@ -745,14 +750,15 @@
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
             <div>
               <div style="font-size:15px;font-weight:800;color:#0B2B24;">Clientes</div>
-              <div style="font-size:11px;color:#94A3B8;">6 cadastrados · 2 em atraso</div>
+              <div style="font-size:11px;color:#94A3B8;">6 cadastrados · 2 em atraso · 1 aguardando confirmação</div>
             </div>
             <div style="background:#1E40AF;color:#fff;font-size:10px;padding:6px 12px;border-radius:8px;font-weight:700;">+ Novo</div>
           </div>
           <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap;">
             <div style="background:#F1F5F9;color:#64748B;font-size:9px;padding:4px 8px;border-radius:6px;font-weight:600;">Todos (6)</div>
-            <div style="background:#FEF3C7;color:#D97706;font-size:9px;padding:4px 8px;border-radius:6px;font-weight:600;">Pendente (2)</div>
+            <div style="background:#FEF3C7;color:#D97706;font-size:9px;padding:4px 8px;border-radius:6px;font-weight:600;">Pendente (1)</div>
             <div style="background:#FEE2E2;color:#DC2626;font-size:9px;padding:4px 8px;border-radius:6px;font-weight:700;">Atrasado (2)</div>
+            <div style="background:#E0F2FE;color:#0369A1;font-size:9px;padding:4px 8px;border-radius:6px;font-weight:700;">Aguardando confirmação (1)</div>
             <div style="background:#DCFCE7;color:#16A34A;font-size:9px;padding:4px 8px;border-radius:6px;font-weight:600;">Pago (2)</div>
           </div>
           <div class="mock-client-row">
@@ -789,20 +795,19 @@
               </div>
             </div>
           </div>
-          <div class="mock-client-row">
+          <div class="mock-client-row" style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:8px 10px;margin-bottom:5px;">
             <div class="mock-client-info">
-              <div class="mock-avatar" style="background:#DBEAFE;color:#1E40AF;">J</div>
+              <div class="mock-avatar" style="background:#E0F2FE;color:#0369A1;">J</div>
               <div>
                 <div class="mock-client-name">João Silva</div>
-                <div class="mock-client-sub">Vence: 30/06/2026</div>
+                <div class="mock-client-sub" style="color:#0369A1;">📎 Comprovante recebido às 09:41</div>
               </div>
             </div>
             <div>
-              <div class="mock-client-val" style="color:#D97706;">R$850</div>
+              <div class="mock-client-val" style="color:#0369A1;font-size:9px;">🕓 Aguardando confirmação</div>
               <div class="mock-btns">
-                <span class="mock-btn" style="background:#EFF6FF;color:#1E40AF;">📊 Régua</span>
-                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">✏️ Editar</span>
-                <span class="mock-btn" style="background:#16A34A;color:#fff;">Cobrar</span>
+                <span class="mock-btn" style="background:#F1F5F9;color:#374151;">👁️ Ver</span>
+                <span class="mock-btn" style="background:#16A34A;color:#fff;">✅ Confirmar</span>
               </div>
             </div>
           </div>
@@ -823,7 +828,7 @@
             </div>
           </div>
         </div>
-        <div class="screen-caption">📊 Botão "Régua" mostra as 5 etapas de cobrança daquele cliente, uma por uma</div>
+        <div class="screen-caption">🕓 Cliente que manda comprovante sai da régua sozinho — status "Aguardando confirmação" aparece automaticamente</div>
       </div>
 
     </div>
@@ -872,9 +877,9 @@
       <div class="step">
         <div class="step-num">5</div>
         <div class="step-content">
-          <h3>Acompanhe e confirme o recebimento</h3>
-          <p>Quando o Pix cair, você clica "Pago" no sistema. O devedor sai da lista e você tem controle total de quem pagou e quem não pagou.</p>
-          <span class="step-tag">✅ Baixa automática no cadastro</span>
+          <h3>O sistema avisa quando o comprovante chega</h3>
+          <p>O cliente manda a foto do Pix ou escreve "paguei" — o sistema já identifica, para a cobrança sozinho e marca como "Aguardando confirmação". Você só confere e clica em confirmar.</p>
+          <span class="step-tag">🤖 Detecção automática + confirmação em 1 clique</span>
         </div>
       </div>
     </div>
@@ -912,6 +917,21 @@
           <div class="wpp-copiaecola">00020126580014BR.GOV.BCB.PIX0136a629...5204000053039865802BR...</div>
           <div class="wpp-time">09:14 ✓✓</div>
         </div>
+        <div class="wpp-row-out">
+          <div class="wpp-bubble-out">
+            <p>Paguei! Segue o comprovante 👇</p>
+            <div class="wpp-time">09:41 ✓✓</div>
+          </div>
+        </div>
+        <div class="wpp-row-out">
+          <div class="wpp-bubble-out" style="padding:8px;">
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:20px;">📄</span>
+              <span style="font-size:12px;color:#475569;font-weight:600;">comprovante_pix.jpg</span>
+            </div>
+            <div class="wpp-time">09:41 ✓✓</div>
+          </div>
+        </div>
       </div>
     </div>
     <div style="max-width:600px;margin:20px auto 0;background:#F0FDF4;border:1px solid #86EFAC;border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;text-align:left;">
@@ -919,6 +939,13 @@
       <div>
         <div style="font-weight:700;font-size:14px;color:var(--dark);margin-bottom:4px;">O Pix cai direto na SUA conta.</div>
         <div style="font-size:13px;color:var(--text);">É a sua própria chave Pix, ligada ao Banco Central. O dinheiro não passa pelo CobrarFácil — vai direto pro seu banco, e você confere o recebimento na hora, no seu próprio aplicativo.</div>
+      </div>
+    </div>
+    <div style="max-width:600px;margin:14px auto 0;background:#ECFDF5;border:1px solid #6EE7B7;border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;text-align:left;">
+      <span style="font-size:20px;flex-shrink:0;">🤖</span>
+      <div>
+        <div style="font-weight:700;font-size:14px;color:var(--dark);margin-bottom:4px;">O sistema reconheceu o comprovante sozinho.</div>
+        <div style="font-size:13px;color:var(--text);">Imagem, PDF ou uma palavra como "pix", "comprovante" ou "paguei" — o sistema identifica na hora, tira o cliente da régua de cobrança e marca como <strong>"Aguardando confirmação"</strong>. Ele para de receber mensagem automaticamente. Você só confirma quando quiser, com um clique.</div>
       </div>
     </div>
   </div>
@@ -931,10 +958,10 @@
     <h2>O sistema cobra sozinho.<br>Até o cliente pagar.</h2>
     <div style="max-width:640px;margin:0 auto 36px;background:#0B2B24;border-radius:16px;padding:22px 26px;text-align:left;">
       <p style="color:#fff;font-size:15px;line-height:1.7;margin:0;">
-        Sem termo técnico: o sistema manda um lembrete <strong style="color:#4ADE80;">3 dias antes</strong> de vencer, cobra <strong style="color:#4ADE80;">no dia</strong>, e continua cobrando <strong style="color:#4ADE80;">3, 15 e 30 dias depois</strong> — com um tom cada vez mais firme.
+        Sem termo técnico: o sistema manda um lembrete <strong style="color:#4ADE80;">3 dias antes</strong> de vencer, cobra <strong style="color:#4ADE80;">no dia</strong>, e continua cobrando <strong style="color:#4ADE80;">5, 15 e 30 dias depois</strong> — com um tom cada vez mais firme.
       </p>
       <p style="color:#CBD5E1;font-size:14px;line-height:1.7;margin-top:12px;">
-        Depois dos 30 dias, o sistema <strong style="color:#fff;">não desiste</strong>: continua mandando cobrança a cada 15 dias, para sempre, até o cliente pagar — ou até você mesmo decidir suspender.
+        Depois dos 30 dias, o sistema <strong style="color:#fff;">não desiste</strong>: continua mandando cobrança a cada 15 dias, para sempre, até o cliente pagar — ou até você mesmo decidir suspender. E se o cliente mandar o comprovante antes disso, o sistema já reconhece e para na hora — sozinho.
       </p>
     </div>
     <p class="section-sub" style="margin:0 auto 0;">Cada etapa em detalhe:</p>
@@ -953,7 +980,7 @@
       <div class="regua-connector"></div>
       <div class="regua-step">
         <div class="regua-ball" style="background:rgba(217,119,6,0.08);border-color:rgba(217,119,6,0.3);color:#D97706;">⚠️</div>
-        <div class="regua-label" style="color:#D97706;">3 dias depois</div>
+        <div class="regua-label" style="color:#D97706;">5 dias depois</div>
         <div class="regua-desc">Mensagem cordial, já em atraso</div>
       </div>
       <div class="regua-connector"></div>
@@ -969,11 +996,20 @@
         <div class="regua-desc">Repete a cada 15 dias — sem parar</div>
       </div>
     </div>
-    <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;max-width:600px;margin:0 auto;display:flex;gap:12px;align-items:flex-start;text-align:left;">
-      <span style="font-size:20px;flex-shrink:0;">💡</span>
-      <div>
-        <div style="font-weight:700;font-size:14px;color:var(--dark);margin-bottom:4px;">Controle total por cliente.</div>
-        <div style="font-size:13px;color:var(--text);">Você pode suspender a cobrança de um cliente específico ou desativar etapas individuais. O padrão é automático — a exceção fica na sua mão.</div>
+    <div class="regua-info-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:800px;margin:0 auto;text-align:left;">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:20px;flex-shrink:0;">🕐</span>
+        <div>
+          <div style="font-weight:700;font-size:14px;color:var(--dark);margin-bottom:4px;">Sabe a hora certa de mandar.</div>
+          <div style="font-size:13px;color:var(--text);">Nunca dispara de madrugada. Se a etapa cair num fim de semana, o sistema adia sozinho pro próximo dia útil, dentro do horário comercial.</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:20px;flex-shrink:0;">💡</span>
+        <div>
+          <div style="font-weight:700;font-size:14px;color:var(--dark);margin-bottom:4px;">Controle total por cliente.</div>
+          <div style="font-size:13px;color:var(--text);">Você pode suspender a cobrança de um cliente específico ou desativar etapas individuais. O padrão é automático — a exceção fica na sua mão.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1004,6 +1040,11 @@
         <div class="feature-icon">⚡</div>
         <div class="feature-title">Pix integrado nas cobranças</div>
         <div class="feature-text">Sua chave Pix aparece em todas as mensagens automaticamente. O devedor recebe, já tem o Pix na mão e não tem desculpa para não pagar.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <div class="feature-title">Detecção automática de comprovante</div>
+        <div class="feature-text">O cliente manda foto, PDF ou só escreve "paguei" — o sistema reconhece na hora, tira ele da régua e marca "Aguardando confirmação". Você só confere e confirma com um clique.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🚫</div>
@@ -1137,6 +1178,10 @@
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">O que acontece quando o devedor responde?<span class="arrow">+</span></button>
         <div class="faq-a">A resposta chega direto no WhatsApp do seu negócio, como qualquer mensagem normal. Você conversa por lá, e quando o cliente pagar, é só marcar "Pago" no sistema — ou usar o botão "Cobrar" pra mandar outra mensagem, ou "Prorrogar" pra dar um novo prazo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">O sistema sabe quando o cliente já pagou?<span class="arrow">+</span></button>
+        <div class="faq-a">Sim. Quando o devedor manda uma foto do comprovante, um PDF, ou escreve algo como "pix", "comprovante" ou "paguei", o sistema reconhece automaticamente, marca o cliente como "Aguardando confirmação" e para de mandar cobrança pra ele na hora. Você só confere e confirma com um clique — sem risco de continuar cobrando quem já pagou.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Meus dados ficam seguros?<span class="arrow">+</span></button>
