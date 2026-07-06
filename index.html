@@ -1138,7 +1138,7 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
           <li>Suporte WhatsApp</li>
           <li>Atualizações gratuitas</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=mensal" class="price-cta outline" onclick="trackInitiateCheckout('mensal', 147)">Assinar agora →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=mensal" class="price-cta outline" onclick="return trackInitiateCheckout(event, 'mensal', 147, this.href)">Assinar agora →</a>
       </div>
 
       <div class="price-card destaque">
@@ -1153,7 +1153,7 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
           <li>Calendário financeiro</li>
           <li>Prioridade no suporte</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=trimestral" class="price-cta" onclick="trackInitiateCheckout('trimestral', 357)">Assinar agora →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=trimestral" class="price-cta" onclick="return trackInitiateCheckout(event, 'trimestral', 357, this.href)">Assinar agora →</a>
       </div>
 
       <div class="price-card">
@@ -1167,7 +1167,7 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
           <li>Relatórios avançados</li>
           <li>Novidades em primeira mão</li>
         </ul>
-        <a href="https://app.cobrarfacil.com.br?plano=anual" class="price-cta outline" style="background:#7C3AED;color:#fff;border:none;" onclick="trackInitiateCheckout('anual', 1164)">Assinar agora →</a>
+        <a href="https://app.cobrarfacil.com.br?plano=anual" class="price-cta outline" style="background:#7C3AED;color:#fff;border:none;" onclick="return trackInitiateCheckout(event, 'anual', 1164, this.href)">Assinar agora →</a>
       </div>
     </div>
 
@@ -1255,7 +1255,8 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
 </footer>
 
 <script>
-  function trackInitiateCheckout(plano, valor) {
+  function trackInitiateCheckout(event, plano, valor, destino) {
+    event.preventDefault();
     if (typeof fbq === 'function') {
       fbq('track', 'InitiateCheckout', {
         content_name: 'Plano ' + plano.charAt(0).toUpperCase() + plano.slice(1),
@@ -1265,6 +1266,9 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
         value: valor
       });
     }
+    // Atraso de 250ms garante que o evento seja enviado antes de sair da página
+    setTimeout(function () { window.location.href = destino; }, 250);
+    return false;
   }
 
   function animateCounter(el, target, decimals, suffix, duration) {
