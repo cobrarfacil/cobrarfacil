@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CobrarFácil — Recupere o dinheiro que você já deu como perdido</title>
   <meta name="description" content="Sistema automático de cobrança via WhatsApp. Recupere dinheiro parado e controle inadimplentes de forma simples. Para pequenos negócios." />
+
+  <!-- Preview ao compartilhar (WhatsApp, Instagram, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CobrarFácil" />
+  <meta property="og:title" content="Receber é crescer. — CobrarFácil" />
+  <meta property="og:description" content="A cobrança que trabalha sozinha no seu WhatsApp. Recupere o dinheiro parado sem constrangimento, sem esquecimento." />
+  <meta property="og:image" content="https://cobrarfacil.com.br/logo-512.png" />
+  <meta property="og:url" content="https://cobrarfacil.com.br" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Receber é crescer. — CobrarFácil" />
+  <meta name="twitter:description" content="A cobrança que trabalha sozinha no seu WhatsApp." />
+  <meta name="twitter:image" content="https://cobrarfacil.com.br/logo-512.png" />
+  <link rel="canonical" href="https://cobrarfacil.com.br" />
+
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -464,10 +478,22 @@
     footer a:hover { color: var(--green); }
     .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
 
+    /* CTA fixo no mobile */
+    .sticky-cta { display: none; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      body { padding-bottom: 68px; }
+      .sticky-cta {
+        display: block; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 900;
+        background: linear-gradient(135deg, #16A34A, #15803D); color: #fff; text-align: center;
+        font-weight: 800; font-size: 16px; padding: 15px 18px; border-radius: 14px; text-decoration: none;
+        box-shadow: 0 8px 28px rgba(22,163,74,0.45);
+      }
       .hero-wrap { grid-template-columns: 1fr; }
-      .hero-mockup { display: none; }
+      /* Mostra o mockup no mobile (empilhado). Ver a tela é o que converte — e a
+         maior parte do tráfego (anúncios no Meta) é mobile. */
+      .hero-mockup { display: block; margin: 20px auto 0; max-width: 330px; }
       section { padding: 72px 5vw; }
       .counter-bar { flex-direction: column; }
       .counter-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -574,7 +600,7 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
                     <div class="mini-card-lbl">Já recebido</div>
                   </div>
                   <div class="mini-card" style="background:#FEF2F2;">
-                    <div class="mini-card-val" style="color:#DC2626;">R$3.150</div>
+                    <div class="mini-card-val" style="color:#DC2626;">R$3.300</div>
                     <div class="mini-card-lbl">Em risco</div>
                   </div>
                   <div class="mini-card" style="background:#F5F3FF;">
@@ -585,7 +611,7 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
 
                 <div class="mini-alert">
                   <span style="font-size:12px;">⚠️</span>
-                  <span class="mini-alert-txt">2 clientes em atraso — R$3.150 em risco</span>
+                  <span class="mini-alert-txt">2 clientes em atraso — R$3.300 em risco</span>
                 </div>
 
                 <div class="mini-client">
@@ -721,7 +747,7 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
               <div class="mock-dash-sub" style="color:#16A34A;">2 pagos →</div>
             </div>
             <div class="mock-dash-card" style="background:#FEF2F2;cursor:pointer;">
-              <div class="mock-dash-val">R$3.150</div>
+              <div class="mock-dash-val">R$3.300</div>
               <div class="mock-dash-lbl">Em risco</div>
               <div class="mock-dash-sub" style="color:#DC2626;">2 atrasados →</div>
             </div>
@@ -733,7 +759,7 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
           </div>
           <div style="background:#FEF2F2;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:center;margin-bottom:10px;cursor:pointer;">
             <span style="font-size:12px;">⚠️</span>
-            <span style="font-size:11px;color:#DC2626;font-weight:600;">2 clientes em atraso — R$3.150 em risco · Ver todos →</span>
+            <span style="font-size:11px;color:#DC2626;font-weight:600;">2 clientes em atraso — R$3.300 em risco · Ver todos →</span>
           </div>
           <div style="background:#F8FAFC;border-radius:10px;padding:12px;">
             <div style="font-size:12px;font-weight:700;margin-bottom:8px;color:#0B2B24;">Situação dos Clientes</div>
@@ -1247,12 +1273,16 @@ src="https://www.facebook.com/tr?id=1358058159760621&ev=PageView&noscript=1"
     </div>
   </a>
   <div>© 2026 CobrarFácil · Todos os direitos reservados</div>
+  <div style="margin-top:6px;font-size:12px;opacity:.8;">Tratamos os dados conforme a LGPD — você é o controlador dos dados dos seus clientes; nós somos o operador.</div>
   <div style="display:flex;gap:18px;flex-wrap:wrap;">
-    <a href="#">Termos de uso</a>
-    <a href="#">Privacidade</a>
+    <a href="/termos.html">Termos de uso</a>
+    <a href="/privacidade.html">Privacidade</a>
     <a href="https://wa.me/5544998970506?text=Suporte+CobrarFacil">Suporte</a>
   </div>
 </footer>
+
+<!-- CTA fixo no mobile — sempre visível numa página longa (só aparece <768px) -->
+<a href="#preco" class="sticky-cta">Começar — 7 dias de garantia →</a>
 
 <script>
   function trackInitiateCheckout(event, plano, valor, destino) {
